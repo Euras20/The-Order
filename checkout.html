@@ -1,1 +1,450 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Order · Caisse Sacrée</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            crimson: '#dc143c',
+            darkred: '#8b0000',
+            obsidian: '#0a0a0f',
+            deepblue: '#0d1b3e',
+            midnight: '#060612',
+            ivory: '#f5f0e8'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes glow { 0%,100%{box-shadow:0 0 20px rgba(220,20,60,0.3)} 50%{box-shadow:0 0 40px rgba(220,20,60,0.6)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes rotateSymbol { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes pulse-border { 0%,100%{border-color:rgba(220,20,60,0.3)} 50%{border-color:rgba(220,20,60,0.8)} }
+    @keyframes sacredShimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+    @keyframes modalRise { 0%{opacity:0; transform: scale(0.95) translateY(20px);} 100%{opacity:1; transform: scale(1) translateY(0);} }
+    .float { animation: float 4s ease-in-out infinite; }
+    .glow { animation: glow 3s ease-in-out infinite; }
+    .fade-up { animation: fadeUp 0.8s ease forwards; opacity:0; }
+    .fade-up-1 { animation-delay: 0.1s; }
+    .fade-up-2 { animation-delay: 0.2s; }
+    .fade-up-3 { animation-delay: 0.3s; }
+    .rotate-slow { animation: rotateSymbol 30s linear infinite; }
+    .pulse-b { animation: pulse-border 2s ease-in-out infinite; }
+    body { font-family: 'Cormorant Garamond', serif; background: #0a0a0f; }
+    h1,h2,h3,.nav-title { font-family: 'Cinzel Decorative', serif; }
+    .bg-pattern {
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(220,20,60,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(13,27,62,0.4) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(220,20,60,0.02) 0%, transparent 50%);
+    }
+    .checkout-input {
+      background: rgba(10,10,15,0.7);
+      border: 1px solid rgba(220,20,60,0.3);
+      transition: all 0.3s;
+    }
+    .checkout-input:focus {
+      border-color: #dc143c;
+      box-shadow: 0 0 12px rgba(220,20,60,0.3);
+      outline: none;
+    }
+    .success-modal-content {
+      background: linear-gradient(135deg, #0d1b3e, #060612);
+      border-image: linear-gradient(135deg, #dc143c, #8b0000) 1;
+      border: 1px solid rgba(220,20,60,0.5);
+      animation: modalRise 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    }
+    .eye-of-providence {
+      filter: drop-shadow(0 0 15px rgba(220,20,60,0.6));
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0f; }
+    ::-webkit-scrollbar-thumb { background: #dc143c; border-radius: 8px; }
+    .cart-item-glow {
+      transition: all 0.2s ease;
+    }
+    .cart-item-glow:hover {
+      background: rgba(220,20,60,0.08);
+      border-left-color: #dc143c;
+    }
+  </style>
+<base target="_blank">
+</head>
+<body class="h-full overflow-x-auto">
+  <div class="min-h-screen bg-obsidian bg-pattern relative">
+    <!-- Sacred geometry overlay -->
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.02] pointer-events-none z-0">
+      <svg class="rotate-slow" width="900" height="900" viewBox="0 0 800 800">
+        <polygon points="400,50 750,650 50,650" fill="none" stroke="#dc143c" stroke-width="1" />
+        <polygon points="400,750 50,150 750,150" fill="none" stroke="#dc143c" stroke-width="1" />
+        <circle cx="400" cy="400" r="300" fill="none" stroke="#dc143c" stroke-width="0.5" />
+        <circle cx="400" cy="400" r="200" fill="none" stroke="#dc143c" stroke-width="0.5" />
+        <path d="M400 100 L450 300 L650 300 L490 420 L550 620 L400 510 L250 620 L310 420 L150 300 L350 300 Z" fill="none" stroke="#dc143c" stroke-width="0.5" />
+        <circle cx="400" cy="400" r="100" fill="none" stroke="#dc143c" stroke-width="0.3" stroke-dasharray="4 4" />
+      </svg>
+    </div>
 
+    <!-- Mini header / navigation back -->
+    <div class="relative z-10 border-b border-crimson/20 bg-obsidian/60 backdrop-blur-md sticky top-0 z-20">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <svg viewBox="0 0 40 40" width="32" height="32">
+            <polygon points="20,2 38,35 2,35" fill="none" stroke="#dc143c" stroke-width="1.5" />
+            <circle cx="20" cy="22" r="5" fill="none" stroke="#dc143c" stroke-width="1.5" />
+            <circle cx="20" cy="22" r="2" fill="#dc143c" />
+          </svg>
+          <span class="nav-title text-crimson text-xl tracking-widest">THE ORDER · SANCTUM</span>
+        </div>
+        <a href="#" href="Untitled-1.html" class="text-ivory/60 hover:text-crimson transition flex items-center gap-1 text-sm uppercase tracking-wider">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Retour aux artéfacts
+        </a>
+      </div>
+    </div>
+
+    <!-- Main checkout section: CART ON RIGHT side as requested -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-20">
+      <div class="text-center mb-10 fade-up fade-up-1">
+        <div class="eye-symbol text-5xl mb-2 float">👁</div>
+        <h1 class="text-3xl md:text-5xl text-crimson font-bold tracking-wide" style="font-family:'Cinzel Decorative',serif;">Sceller l'Alliance</h1>
+        <p class="text-ivory/50 text-lg max-w-2xl mx-auto mt-2">Finalisez votre initiation en acquérant les artéfacts sacrés. Votre héritage vous attend.</p>
+      </div>
+
+      <!-- Grid layout: Form (left) + Cart Summary (right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- CHECKOUT FORM (LEFT SIDE - 2/3 width) -->
+        <div class="lg:col-span-2 order-1 fade-up fade-up-2">
+          <div class="border border-crimson/20 bg-gradient-to-b from-deepblue/30 to-obsidian/80 rounded-lg p-6 md:p-8 shadow-2xl">
+            <h2 class="text-2xl text-crimson mb-6 flex items-center gap-2 border-b border-crimson/20 pb-3" style="font-family:'Cinzel Decorative',serif;"><i data-lucide="scroll" class="w-6 h-6"></i> Détails du Disciple</h2>
+            <form id="checkout-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-ivory/80 text-sm uppercase tracking-wider mb-1 font-semibold">Prénom</label>
+                  <input type="text" id="first-name" required class="w-full checkout-input rounded-md px-4 py-3 text-ivory placeholder-ivory/30">
+                </div>
+                <div>
+                  <label class="block text-ivory/80 text-sm uppercase tracking-wider mb-1 font-semibold">Nom</label>
+                  <input type="text" id="last-name" required class="w-full checkout-input rounded-md px-4 py-3 text-ivory placeholder-ivory/30">
+                </div>
+              </div>
+              <div>
+                <label class="block text-ivory/80 text-sm uppercase tracking-wider mb-1 font-semibold">Email sacré</label>
+                <input type="email" id="email" required class="w-full checkout-input rounded-md px-4 py-3 text-ivory placeholder-ivory/30">
+              </div>
+              <div>
+                <label class="block text-ivory/80 text-sm uppercase tracking-wider mb-1 font-semibold">Adresse de livraison (royaume)</label>
+                <input type="text" id="address" required class="w-full checkout-input rounded-md px-4 py-3 text-ivory placeholder-ivory/30">
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-ivory/80 text-sm uppercase tracking-wider mb-1 font-semibold">Ville</label>
+                  <input type="text" id="city" required class="w-full checkout-input rounded-md px-4 py-3 text-ivory">
+                </div>
+                <div>
+                  <label class="block text-ivory/80 text-sm uppercase tracking-wider mb-1 font-semibold">Code postal</label>
+                  <input type="text" id="zip" required class="w-full checkout-input rounded-md px-4 py-3 text-ivory">
+                </div>
+              </div>
+              <div>
+                <label class="block text-ivory/80 text-sm uppercase tracking-wider mb-1 font-semibold">Numéro de carte (chiffres sacrés)</label>
+                <input type="text" id="card-number" placeholder="**** **** **** 1776" required class="w-full checkout-input rounded-md px-4 py-3 text-ivory">
+              </div>
+              <div class="grid grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-ivory/80 text-sm uppercase tracking-wider mb-1 font-semibold">Expiration (MM/AA)</label>
+                  <input type="text" id="expiry" placeholder="09/28" required class="w-full checkout-input rounded-md px-4 py-3 text-ivory">
+                </div>
+                <div>
+                  <label class="block text-ivory/80 text-sm uppercase tracking-wider mb-1 font-semibold">CVC</label>
+                  <input type="text" id="cvc" required class="w-full checkout-input rounded-md px-4 py-3 text-ivory">
+                </div>
+              </div>
+              <div class="pt-4">
+                <button type="submit" id="place-order-btn" class="w-full glow px-6 py-4 bg-gradient-to-r from-crimson to-darkred text-obsidian font-bold tracking-widest uppercase text-sm hover:scale-[1.02] transition-all duration-300 rounded-md flex items-center justify-center gap-2 shadow-lg">
+                  <i data-lucide="gem" class="w-5 h-5"></i> Finaliser la Consécration
+                </button>
+                <p class="text-ivory/30 text-center text-xs mt-4 flex items-center justify-center gap-1"><i data-lucide="eye" class="w-3 h-3"></i> En finalisant cette commande, vous prêtez allégeance à l'alliance éternelle</p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- CART SUMMARY (RIGHT SIDE - ILLUMINATI STYLE) -->
+        <div class="lg:col-span-1 order-2 fade-up fade-up-3">
+          <div class="border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 rounded-lg overflow-hidden sticky top-24 shadow-2xl">
+            <div class="p-5 border-b border-crimson/20 bg-crimson/10">
+              <div class="flex items-center gap-2 justify-between">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="shopping-bag" class="w-5 h-5 text-crimson"></i>
+                  <h3 class="text-crimson text-xl font-bold tracking-wide" style="font-family:'Cinzel Decorative',serif;">Panier d'Initiation</h3>
+                </div>
+                <div class="text-ivory/40 text-xs border border-crimson/30 px-2 py-1 rounded-full">✦ sacré ✦</div>
+              </div>
+            </div>
+            <div id="cart-items-list" class="p-4 space-y-3 max-h-[360px] overflow-y-auto custom-scroll">
+              <!-- dynamic cart items will be injected -->
+              <div class="flex justify-center items-center py-8 text-ivory/40 text-sm"><i data-lucide="loader" class="w-4 h-4 animate-spin mr-2"></i> Loading relics...</div>
+            </div>
+            <div class="p-5 border-t border-crimson/20 bg-obsidian/60">
+              <div class="flex justify-between text-ivory text-lg mb-3">
+                <span class="uppercase tracking-wider font-bold" style="font-family:'Cinzel Decorative',serif;">Tribut Total</span>
+                <span id="cart-total" class="text-crimson font-bold text-2xl">$0</span>
+              </div>
+              <div class="text-ivory/40 text-[11px] text-center mt-3 flex items-center justify-center gap-2 border-t border-crimson/10 pt-3">
+                <i data-lucide="shield-check" class="w-3 h-3"></i> 256-bit consecrated encryption
+                <i data-lucide="badge-check" class="w-3 h-3 ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <!-- sacred promise badge enhanced -->
+          <div class="mt-5 text-center text-ivory/40 text-xs border border-crimson/15 p-3 rounded-lg bg-midnight/40 backdrop-blur-sm">
+            <span class="text-crimson text-sm">✦</span> Chaque achat inclut un parchemin d'authenticité &amp; un sceau de cire <span class="text-crimson text-sm">✦</span>
+          </div>
+          <div class="mt-3 flex justify-center gap-2 text-ivory/30 text-[10px] uppercase tracking-wider">
+            <span>Annuit Cœptis</span> • <span>Novus Ordo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer hint -->
+    <footer class="relative z-10 border-t border-crimson/20 py-8 mt-12 text-center text-ivory/30 text-sm">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-3">
+        <div class="flex gap-3 items-center"><svg viewBox="0 0 30 30" width="20" height="20"><polygon points="15,2 28,26 2,26" fill="none" stroke="#dc143c" stroke-width="1.5"/><circle cx="15" cy="16" r="3" fill="#dc143c"/></svg> <span>THE ORDER · LUX ET VERITAS</span></div>
+        <div class="flex gap-5"><span>Ordo Ab Chao</span><span>Est. 1776</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- === SUCCESS MODAL (ILLUMINATI VIBE + TRIUMPH) === -->
+  <div id="success-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300">
+    <div class="relative max-w-md w-full mx-4">
+      <div class="absolute inset-0 overflow-hidden rounded-2xl opacity-10 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 300 300">
+          <polygon points="150,20 280,230 20,230" fill="none" stroke="#dc143c" stroke-width="2" />
+          <circle cx="150" cy="150" r="80" fill="none" stroke="#dc143c" stroke-width="1.5" />
+          <polygon points="150,70 180,130 240,130 190,170 210,230 150,195 90,230 110,170 60,130 120,130" fill="none" stroke="#dc143c" stroke-width="1" />
+        </svg>
+      </div>
+      <div class="success-modal-content relative rounded-2xl shadow-2xl p-8 text-center border border-crimson/40 z-10">
+        <div class="flex justify-center mb-4">
+          <div class="eye-of-providence float">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <polygon points="40,8 72,68 8,68" fill="none" stroke="#dc143c" stroke-width="2.5" />
+              <circle cx="40" cy="38" r="12" fill="none" stroke="#dc143c" stroke-width="2.5" />
+              <circle cx="40" cy="38" r="5" fill="#dc143c" />
+              <path d="M30 63 L50 63 L50 70 L30 70 Z" fill="#dc143c" opacity="0.9" />
+              <line x1="40" y1="20" x2="40" y2="10" stroke="#dc143c" stroke-width="1.5" stroke-dasharray="3 2"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-3xl text-crimson font-bold mb-2 tracking-wider">✦ Consecration sealed ✦</h3>
+        <div class="w-20 h-px bg-gradient-to-r from-transparent via-crimson to-transparent mx-auto my-4"></div>
+        <p class="text-ivory/80 text-base mb-3 leading-relaxed">Your sacred artifacts have been blessed and assigned to your bloodline.</p>
+        <div class="bg-obsidian/70 p-3 rounded-md border-l-4 border-crimson my-4 text-left shadow-inner">
+          <p class="text-ivory/60 text-xs uppercase tracking-wider font-mono mb-1 flex items-center gap-1"><i data-lucide="badge" class="w-3 h-3"></i> 🜁 Order reference</p>
+          <p class="text-crimson font-mono text-sm font-bold tracking-wider" id="order-reference">OR-1776-9X4F-3L1M</p>
+        </div>
+        <p class="text-ivory/50 text-sm italic">“The eye sees what the heart seeks. A messenger will arrive within 3–5 cycles.”</p>
+        <div class="flex mt-7 gap-3">
+          <button id="close-modal-btn" class="flex-1 py-3 border border-crimson/50 text-crimson hover:bg-crimson/10 transition rounded-md uppercase text-sm tracking-wide font-semibold">Continue journey</button>
+        </div>
+        <p class="text-ivory/30 text-[10px] mt-4">This receipt serves as your cipher for the inner sanctum. <span class="text-crimson">🔺</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // --- Sacred Artifacts Catalog (from The Order) ---
+    const productCatalog = {
+      1: { name: "The All-Seeing Pendant", price: 2777, category: "jewelry" },
+      2: { name: "Codex of Enlightenment", price: 4999, category: "manuscripts" },
+      3: { name: "Sigil of Power Ring", price: 1333, category: "jewelry" },
+      4: { name: "Ceremonial Dagger", price: 3333, category: "tools" },
+      5: { name: "Seal of Solomon", price: 1888, category: "manuscripts" },
+      6: { name: "Crown of Wisdom", price: 5555, category: "jewelry" }
+    };
+    
+    // Read cart from localStorage (set by index.html when user clicks Buy Now)
+    let cartItems = [];
+    try {
+      const savedCart = localStorage.getItem('theOrderCart');
+      if (savedCart) {
+        cartItems = JSON.parse(savedCart);
+      }
+    } catch(e) {
+      console.error('Error reading cart:', e);
+    }
+
+    // Fallback demo cart if empty
+    if (!cartItems || cartItems.length === 0) {
+      cartItems = [
+        { id: 1, name: "The All-Seeing Pendant", price: 2777, quantity: 1, icon: "gem" },
+        { id: 3, name: "Sigil of Power Ring", price: 1333, quantity: 1, icon: "circle" },
+        { id: 2, name: "Codex of Enlightenment", price: 4999, quantity: 1, icon: "book-open" }
+      ];
+    }
+    
+    // Helper: render cart with mystical details
+    function renderCart() {
+      const container = document.getElementById('cart-items-list');
+      if (!container) return;
+      if (cartItems.length === 0) {
+        container.innerHTML = '<div class="text-center text-ivory/40 py-8 italic flex flex-col items-center gap-2"><i data-lucide="archive" class="w-8 h-8 opacity-30"></i><span>Aucune relique sélectionnée. Retournez aux artéfacts.</span></div>';
+        document.getElementById('cart-total').innerText = '$0';
+        if(window.lucide) lucide.createIcons();
+        return;
+      }
+      let total = 0;
+      let html = '';
+      cartItems.forEach((item, idx) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        html += `
+          <div class="cart-item-glow flex justify-between items-start border-l-2 border-crimson/30 pl-3 py-2 pr-1 rounded-r-lg transition-all duration-200 bg-obsidian/30 hover:bg-obsidian/50">
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <i data-lucide="${item.icon || 'diamond'}" class="w-4 h-4 text-crimson/80"></i>
+                <h4 class="text-ivory font-semibold tracking-wide">${escapeHtml(item.name)}</h4>
+              </div>
+              <div class="text-crimson/80 text-sm font-mono mt-1">$${item.price.toLocaleString()} <span class="text-ivory/30 text-xs">× ${item.quantity}</span></div>
+            </div>
+            <div class="text-right">
+              <div class="text-crimson font-bold text-lg">$${itemTotal.toLocaleString()}</div>
+              <div class="text-ivory/40 text-[10px] uppercase tracking-wider">offrande</div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+      document.getElementById('cart-total').innerText = `$${total.toLocaleString()}`;
+      if (window.lucide) lucide.createIcons();
+    }
+    
+    function escapeHtml(str) {
+      if(!str) return '';
+      return str.replace(/[&<>]/g, function(m) {
+        if(m === '&') return '&amp;';
+        if(m === '<') return '&lt;';
+        if(m === '>') return '&gt;';
+        return m;
+      });
+    }
+    
+    // generate sacred order reference
+    function generateOrderRef() {
+      const num = Math.floor(Math.random() * 9000) + 1000;
+      const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+      const part1 = letters[Math.floor(Math.random() * letters.length)] + letters[Math.floor(Math.random() * letters.length)];
+      const part2 = Math.random().toString(36).substring(2,6).toUpperCase();
+      return `OR-${part1}${Math.floor(Math.random()*9)}-${part2}-${num}`;
+    }
+    
+    function showSuccessModal(orderRef, customerName, totalAmount) {
+      const modal = document.getElementById('success-modal');
+      const orderSpan = document.getElementById('order-reference');
+      if(orderSpan) orderSpan.innerText = orderRef;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+    
+    function closeModal() {
+      const modal = document.getElementById('success-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+    
+    // Handle checkout rite
+    function handleCheckout(event) {
+      event.preventDefault();
+      
+      const firstName = document.getElementById('first-name').value.trim();
+      const lastName = document.getElementById('last-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const zip = document.getElementById('zip').value.trim();
+      const cardNumber = document.getElementById('card-number').value.trim();
+      const expiry = document.getElementById('expiry').value.trim();
+      const cvc = document.getElementById('cvc').value.trim();
+      
+      if (!firstName || !lastName || !email || !address || !city || !zip || !cardNumber || !expiry || !cvc) {
+        alert("✧ Tous les champs doivent être sanctifiés avant soumission. ✧");
+        return;
+      }
+      
+      if (cartItems.length === 0) {
+        alert("Votre panier est vide. Sélectionnez des artéfacts sacrés avant la consécration.");
+        return;
+      }
+      
+      let total = 0;
+      cartItems.forEach(item => { total += item.price * item.quantity; });
+      
+      const btn = document.getElementById('place-order-btn');
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '<i data-lucide="loader" class="w-5 h-5 animate-spin"></i> Consécration en cours...';
+      btn.disabled = true;
+      if(window.lucide) lucide.createIcons();
+      
+      setTimeout(() => {
+        const orderRef = generateOrderRef();
+        const orderData = {
+          orderId: orderRef,
+          disciple: `${firstName} ${lastName}`,
+          email: email,
+          items: cartItems,
+          total: total,
+          timestamp: new Date().toISOString(),
+          sigil: "🜁"
+        };
+        localStorage.setItem(`order_${orderRef}`, JSON.stringify(orderData));
+        
+        showSuccessModal(orderRef, `${firstName} ${lastName}`, total);
+        
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+        
+        document.getElementById('checkout-form').reset();
+        // clear cart but maintain elegance
+        cartItems = [];
+        localStorage.removeItem('theOrderCart');
+        renderCart();
+        
+        if(window.lucide) lucide.createIcons();
+      }, 1400);
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCart();
+      
+      const form = document.getElementById('checkout-form');
+      if(form) form.addEventListener('submit', handleCheckout);
+      
+      const closeBtn = document.getElementById('close-modal-btn');
+      if(closeBtn) closeBtn.addEventListener('click', closeModal);
+      
+      const modalBg = document.getElementById('success-modal');
+      if(modalBg) {
+        modalBg.addEventListener('click', (e) => {
+          if(e.target === modalBg) closeModal();
+        });
+      }
+      
+      setInterval(() => {
+        if(document.querySelectorAll('[data-lucide]').length) lucide.createIcons();
+      }, 300);
+    });
+  </script>
+</body>
+</html>
