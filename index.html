@@ -1,1 +1,736 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Order Marketplace</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            crimson: '#dc143c',
+            darkred: '#8b0000',
+            obsidian: '#0a0a0f',
+            deepblue: '#0d1b3e',
+            midnight: '#060612',
+            ivory: '#f5f0e8'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes glow { 0%,100%{box-shadow:0 0 20px rgba(220,20,60,0.3)} 50%{box-shadow:0 0 40px rgba(220,20,60,0.6)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes rotateSymbol { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes pulse-border { 0%,100%{border-color:rgba(220,20,60,0.3)} 50%{border-color:rgba(220,20,60,0.8)} }
+    .float { animation: float 4s ease-in-out infinite; }
+    .glow { animation: glow 3s ease-in-out infinite; }
+    .fade-up { animation: fadeUp 0.8s ease forwards; opacity:0; }
+    .fade-up-1 { animation-delay: 0.1s; }
+    .fade-up-2 { animation-delay: 0.3s; }
+    .fade-up-3 { animation-delay: 0.5s; }
+    .fade-up-4 { animation-delay: 0.7s; }
+    .fade-up-5 { animation-delay: 0.9s; }
+    .fade-up-6 { animation-delay: 1.1s; }
+    .rotate-slow { animation: rotateSymbol 30s linear infinite; }
+    .pulse-b { animation: pulse-border 2s ease-in-out infinite; }
+    .product-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 60px rgba(220,20,60,0.2); }
+    .product-card { transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .eye-symbol { font-size: 2.5rem; }
+    .sacred-border { border-image: linear-gradient(135deg, #dc143c, #0d1b3e, #dc143c) 1; }
+    body { font-family: 'Cormorant Garamond', serif; }
+    h1,h2,h3,.nav-title { font-family: 'Cinzel Decorative', serif; }
+    .bg-pattern {
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(220,20,60,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(13,27,62,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(220,20,60,0.02) 0%, transparent 50%);
+    }
+    .triangle-bg::before {
+      content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:300px;height:300px;
+      background:linear-gradient(135deg,transparent 40%,rgba(220,20,60,0.05) 50%,transparent 60%);
+      clip-path:polygon(50% 0%,0% 100%,100% 100%);
+      pointer-events:none;
+    }
+    .star-rating { color: #dc143c; letter-spacing: 2px; }
+    .trust-badge { backdrop-filter: blur(10px); }
+    .filter-btn { transition: all 0.3s ease; }
+    .filter-btn.active { background: #dc143c; color: #0a0a0f; border-color: #dc143c; }
+    .bespoke-section { background: linear-gradient(135deg, rgba(220,20,60,0.1) 0%, rgba(13,27,62,0.2) 100%); }
+    .lang-select {
+      background: transparent;
+      color: #f5f0e8;
+      border: 1px solid rgba(220,20,60,0.3);
+      padding: 0.25rem 0.75rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+    }
+    .lang-select option {
+      background: #0a0a0f;
+      color: #f5f0e8;
+    }
+    .lang-select:focus {
+      border-color: #dc143c;
+    }
+    [dir="rtl"] .flex-row { flex-direction: row-reverse; }
+    [dir="rtl"] .text-left { text-align: right; }
+    [dir="rtl"] .text-right { text-align: left; }
+    [dir="rtl"] .mr-1, [dir="rtl"] .mr-2, [dir="rtl"] .mr-3, [dir="rtl"] .mr-4, [dir="rtl"] .mr-6, [dir="rtl"] .mr-8 { margin-right: 0; }
+    [dir="rtl"] .ml-1, [dir="rtl"] .ml-2, [dir="rtl"] .ml-3, [dir="rtl"] .ml-4, [dir="rtl"] .ml-6, [dir="rtl"] .ml-8 { margin-left: 0; }
+    [dir="rtl"] .md\:flex-row { flex-direction: row-reverse; }
+    [dir="rtl"] .justify-between { justify-content: space-between; }
+    [dir="rtl"] .items-center { align-items: center; }
+    [dir="rtl"] .gap-3 { gap: 0.75rem; }
+    [dir="rtl"] .gap-4 { gap: 1rem; }
+    [dir="rtl"] .gap-6 { gap: 1.5rem; }
+    [dir="rtl"] .gap-8 { gap: 2rem; }
+    [dir="rtl"] .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    [dir="rtl"] .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    [dir="rtl"] .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    [dir="rtl"] .flex-col { flex-direction: column; }
+    [dir="rtl"] .sm\:flex-row { flex-direction: row-reverse; }
+    [dir="rtl"] .md\:flex-row { flex-direction: row-reverse; }
+    [dir="rtl"] .flex-wrap { flex-wrap: wrap; }
+    [dir="rtl"] .justify-center { justify-content: center; }
+    [dir="rtl"] .mx-auto { margin-left: auto; margin-right: auto; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ <script src="/_sdk/telemetry_sdk.js"></script><base target="_blank">
+<base target="_blank">
+</head>
+ <body class="h-full bg-obsidian text-ivory overflow-auto" dir="ltr">
+  <div class="w-full h-full bg-pattern relative">
 
+   <!-- Sacred Geometry Background Element -->
+   <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none z-0">
+    <svg class="rotate-slow" width="800" height="800" viewbox="0 0 800 800">
+     <polygon points="400,50 750,650 50,650" fill="none" stroke="#dc143c" stroke-width="1" />
+     <polygon points="400,750 50,150 750,150" fill="none" stroke="#dc143c" stroke-width="1" />
+     <circle cx="400" cy="400" r="300" fill="none" stroke="#dc143c" stroke-width="0.5" />
+     <circle cx="400" cy="400" r="200" fill="none" stroke="#dc143c" stroke-width="0.5" />
+    </svg>
+   </div>
+   <!-- Navigation -->
+   <nav class="relative z-10 w-full border-b border-crimson/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="w-10 h-10 flex items-center justify-center overflow-hidden  ">
+       <img src="logo-the-order.png" alt="The Order Logo" class="w-full h-full object-cover">
+      </div>
+      <span id="nav-title" class="nav-title text-crimson text-xl tracking-widest">THE ORDER</span>
+     </div>
+     <div class="hidden md:flex items-center gap-8 text-sm tracking-wider uppercase text-ivory/70">
+      <a href="#products" class="hover:text-crimson transition-colors" data-i18n="nav_artifacts">Artifacts</a>
+      <a href="#bespoke" class="hover:text-crimson transition-colors" data-i18n="nav_bespoke">Bespoke</a>
+      <a href="#testimonials" class="hover:text-crimson transition-colors" data-i18n="nav_testimonials">Testimonials</a>
+      <select id="lang-selector" class="lang-select rounded" onchange="changeLanguage(this.value)">
+        <option value="fr">FR — Français</option>
+        <option value="en">EN — English</option>
+        <option value="es">ES — Español</option>
+        <option value="de">DE — Deutsch</option>
+        <option value="pt">PT — Português</option>
+        <option value="ar">AR — العربية</option>
+      </select>
+      <button onclick="document.getElementById('join-modal').classList.remove('hidden')" class="px-5 py-2 border border-crimson text-crimson hover:bg-crimson hover:text-obsidian transition-all duration-300 tracking-widest text-xs" data-i18n="btn_join">JOIN US</button>
+     </div>
+     <button class="md:hidden text-crimson" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+     </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col gap-3 text-sm tracking-wider uppercase text-ivory/70">
+     <a href="#products" class="hover:text-crimson transition-colors py-2" data-i18n="nav_artifacts">Artifacts</a>
+     <a href="#bespoke" class="hover:text-crimson transition-colors py-2" data-i18n="nav_bespoke">Bespoke</a>
+     <a href="#testimonials" class="hover:text-crimson transition-colors py-2" data-i18n="nav_testimonials">Testimonials</a>
+     <select id="lang-selector-mobile" class="lang-select rounded w-full mt-2" onchange="changeLanguage(this.value)">
+       <option value="fr">FR — Français</option>
+       <option value="en">EN — English</option>
+       <option value="es">ES — Español</option>
+       <option value="de">DE — Deutsch</option>
+       <option value="pt">PT — Português</option>
+       <option value="ar">AR — العربية</option>
+     </select>
+    </div>
+   </nav>
+   <!-- Hero Section -->
+   <section class="relative z-10 w-full py-24 md:py-36 px-6 text-center triangle-bg">
+    <div class="max-w-4xl mx-auto">
+     <div class="eye-symbol float mb-8 fade-up fade-up-1">
+      <img src="hero-the-order.png" alt="All-Seeing Eye" class="w-24 h-24 md:w-32 md:h-32 object-contain mx-auto opacity-90">
+     </div>
+     <h1 id="hero-headline" class="text-3xl md:text-5xl lg:text-6xl text-crimson mb-6 leading-tight fade-up fade-up-2" data-i18n="hero_headline">Exclusive Artifacts for the Enlightened</h1>
+     <p id="hero-subtext" class="text-lg md:text-xl text-ivory/60 max-w-2xl mx-auto mb-10 leading-relaxed fade-up fade-up-3" data-i18n="hero_subtext">Access forbidden knowledge, sacred relics, and tools of ascension. Reserved exclusively for those who seek the light beyond the veil.</p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up fade-up-4">
+      <a href="#products" class="glow px-8 py-4 bg-gradient-to-r from-crimson to-darkred text-obsidian font-semibold tracking-widest uppercase text-sm hover:scale-105 transition-transform" data-i18n="btn_explore">Explore Artifacts</a>
+      <button onclick="document.getElementById('join-modal').classList.remove('hidden')" class="px-8 py-4 border border-crimson/50 text-crimson tracking-widest uppercase text-sm hover:border-crimson hover:bg-crimson/5 transition-all" data-i18n="btn_request">Request Initiation</button>
+     </div>
+    </div>
+   </section>
+   <!-- Trust Indicators -->
+   <section id="trust" class="relative z-10 w-full py-16 px-6 border-y border-crimson/10">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+     <div class="trust-badge p-4 border border-crimson/10 bg-deepblue/20 fade-up fade-up-1">
+      <i data-lucide="shield-check" class="w-8 h-8 text-crimson mx-auto mb-2"></i>
+      <div class="text-2xl font-bold text-crimson">
+       256-bit
+      </div>
+      <div class="text-xs text-ivory/50 uppercase tracking-wider" data-i18n="trust_encrypted">
+       Encrypted
+      </div>
+     </div>
+     <div class="trust-badge p-4 border border-crimson/10 bg-deepblue/20 fade-up fade-up-2">
+      <i data-lucide="users" class="w-8 h-8 text-crimson mx-auto mb-2"></i>
+      <div class="text-2xl font-bold text-crimson">
+       33,000+
+      </div>
+      <div class="text-xs text-ivory/50 uppercase tracking-wider" data-i18n="trust_members">
+       Members
+      </div>
+     </div>
+     <div class="trust-badge p-4 border border-crimson/10 bg-deepblue/20 fade-up fade-up-3">
+      <i data-lucide="globe" class="w-8 h-8 text-crimson mx-auto mb-2"></i>
+      <div class="text-2xl font-bold text-crimson">
+       147
+      </div>
+      <div class="text-xs text-ivory/50 uppercase tracking-wider" data-i18n="trust_countries">
+       Countries
+      </div>
+     </div>
+     <div class="trust-badge p-4 border border-crimson/10 bg-deepblue/20 fade-up fade-up-4">
+      <i data-lucide="award" class="w-8 h-8 text-crimson mx-auto mb-2"></i>
+      <div class="text-2xl font-bold text-crimson">
+       Est. 1776
+      </div>
+      <div class="text-xs text-ivory/50 uppercase tracking-wider" data-i18n="trust_legacy">
+       Legacy
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Filter Section -->
+   <section id="products" class="relative z-10 w-full py-16 px-6 border-b border-crimson/10">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl text-crimson mb-4" data-i18n="section_artifacts">Sacred Artifacts</h2>
+      <p class="text-ivory/50 max-w-xl mx-auto mb-8" data-i18n="section_artifacts_desc">Each piece carries the weight of centuries. Crafted by masters, imbued with purpose.</p>
+     </div>
+     <div class="flex flex-wrap justify-center gap-3 mb-8">
+      <button class="filter-btn active px-6 py-2 border border-crimson/30 text-ivory/70 text-sm uppercase tracking-wider" onclick="filterProducts('all')" data-i18n="filter_all">All Artifacts</button>
+      <button class="filter-btn px-6 py-2 border border-crimson/30 text-ivory/70 text-sm uppercase tracking-wider" onclick="filterProducts('jewelry')" data-i18n="filter_jewelry">Jewelry</button>
+      <button class="filter-btn px-6 py-2 border border-crimson/30 text-ivory/70 text-sm uppercase tracking-wider" onclick="filterProducts('manuscripts')" data-i18n="filter_manuscripts">Manuscripts</button>
+      <button class="filter-btn px-6 py-2 border border-crimson/30 text-ivory/70 text-sm uppercase tracking-wider" onclick="filterProducts('tools')" data-i18n="filter_tools">Tools & Relics</button>
+     </div>
+    </div>
+   </section>
+   <!-- Products Section -->
+   <section class="relative z-10 w-full py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card product jewelry border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="https://kimi-web-img.moonshot.cn/img/i.ebayimg.com/da6d04238be552ac040f58a927113882936e26e4.jpg" alt="The All-Seeing Pendant" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-crimson/90 text-obsidian text-xs font-bold uppercase tracking-wider" data-i18n="badge_limited">
+         Limited
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(312)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product1_name">The All-Seeing Pendant</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product1_desc">Hand-forged 24k gold pendant with sacred geometry. Worn by the inner circle since the 18th century.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$2,777</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$3,500</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-card product manuscripts border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="grimoire.jpg" alt="Codex of Enlightenment" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-red-900/80 text-ivory text-xs font-bold uppercase tracking-wider" data-i18n="badge_rare">
+         Rare
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(89)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product2_name">Codex of Enlightenment</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product2_desc">Leather-bound manuscript containing 33 degrees of hidden wisdom. Each page hand-inscribed.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$4,999</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$6,200</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="product-card product jewelry border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="anneau.jpg" alt="Sigil of Power Ring" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-crimson/90 text-obsidian text-xs font-bold uppercase tracking-wider" data-i18n="badge_bestseller">
+         Bestseller
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(1,204)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product3_name">Sigil of Power Ring</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product3_desc">Obsidian and crimson signet ring. The pentacle design channels ancient energies of the Order.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$1,333</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$1,800</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="product-card product tools border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="bougie.jpg" alt="Ceremonial Dagger" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-crimson/90 text-obsidian text-xs font-bold uppercase tracking-wider" data-i18n="badge_new">
+         New
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(156)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product4_name">Sacred Candle For Prayer</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product4_desc">Damascus steel blade with crimson lacquer grip. Used in the highest rituals of initiation.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$3,333</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$4,200</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 5 -->
+      <div class="product-card product manuscripts border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="https://kimi-web-img.moonshot.cn/img/erethereal.com/26db339a19e253d21ccf6ab4289fa9506041add5.png" alt="Seal of Solomon" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-red-900/80 text-ivory text-xs font-bold uppercase tracking-wider" data-i18n="badge_sacred">
+         Sacred
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(73)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product5_name">Seal of Solomon</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product5_desc">Antique wax seal impression book. Contains the sigils of the 72 spirits of the hierarchy.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$1,888</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$2,500</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 6 -->
+      <div class="product-card product jewelry border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="incense.jpg" alt="Crown of Wisdom" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-crimson/90 text-obsidian text-xs font-bold uppercase tracking-wider" data-i18n="badge_limited">
+         Limited
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(521)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product6_name">Purification Incense</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product6_desc">Ceremonial headdress crafted from obsidian and crimson stone. Amplifies intuition and insight.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$5,555</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$7,000</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product-card product jewelry border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="baphomet.jpg"  alt="Oath Bracelet" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-red-900/80 text-ivory text-xs font-bold uppercase tracking-wider" data-i18n="badge_sacred">
+         Sacred
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(198)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product7_name">Baphomet with Installation</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product7_desc">Hand-forged sterling silver cuff bracelet. Worn during initiation oaths for centuries.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$1,111</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$1,500</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 8 -->
+      <div class="product-card product tools border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="tarot.webp" alt="Old World Compass" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-red-900/80 text-ivory text-xs font-bold uppercase tracking-wider" data-i18n="badge_rare">
+         Rare
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(67)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product8_name">Old World Compass</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product8_desc">Antique brass compass with maritime sundial. Guides travelers to unknown lands.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$2,222</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$3,000</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 9 -->
+      <div class="product-card product tools border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="https://kimi-web-img.moonshot.cn/img/www.rocksandgemscanada.com/e5e589b55f123541b3fc72b6545b2ca98cda8d2a.jpg" alt="Clairvoyant Crystal Skull" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-crimson/90 text-obsidian text-xs font-bold uppercase tracking-wider" data-i18n="badge_limited">
+         Limited
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(445)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product9_name">Clairvoyant Crystal Skull</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product9_desc">Skull carved from high-grade pure quartz. Amplifies inner vision and deep meditation.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$3,333</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$4,500</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 10 -->
+      <div class="product-card product tools border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="https://kimi-web-img.moonshot.cn/img/m.media-amazon.com/a234089b28e79758ad66ab0f6664b060096c2acf.jpg" alt="Grail Chalice" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-red-900/80 text-ivory text-xs font-bold uppercase tracking-wider" data-i18n="badge_sacred">
+         Sacred
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(89)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product10_name">Grail Chalice</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product10_desc">Ornate brass chalice with medieval engravings. Used in the most sacred ceremonies.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$4,444</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$5,800</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 11 -->
+      <div class="product-card product tools border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="https://kimi-web-img.moonshot.cn/img/i.etsystatic.com/9f7e26b2fae837cd2c8288af8cb15c89ebb1b77e.jpg" alt="Alchemy Flasks" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-crimson/90 text-obsidian text-xs font-bold uppercase tracking-wider" data-i18n="badge_new">
+         New
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(234)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product11_name">Alchemy Flasks</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product11_desc">Collection of vintage stained glass apothecary flasks. Contain the elixirs of ancient masters.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$1,777</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$2,400</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 12 -->
+      <div class="product-card product tools border border-crimson/20 bg-gradient-to-b from-deepblue/40 to-obsidian/80 overflow-hidden group">
+       <div class="relative h-64 bg-gradient-to-br from-deepblue to-midnight flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent"></div>
+        <img src="set-de-rituel.webp" alt="Hourglass of Eternity" class="relative z-10 w-48 h-48 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+        <div class="absolute top-3 right-3 px-3 py-1 bg-crimson/90 text-obsidian text-xs font-bold uppercase tracking-wider" data-i18n="badge_bestseller">
+         Bestseller
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="star-rating text-sm mb-2">
+         ★★★★★ <span class="text-ivory/40 ml-1">(1,567)</span>
+        </div>
+        <h3 class="text-xl text-crimson mb-2" data-i18n="product12_name">Hourglass of Eternity</h3>
+        <p class="text-ivory/50 text-sm mb-4 leading-relaxed" data-i18n="product12_desc">Antique brass hourglass with pure white sand. Measures time between visible and invisible worlds.</p>
+        <div class="flex items-center justify-between">
+         <div>
+          <span class="text-2xl text-crimson font-bold">$2,999</span>
+          <span class="text-ivory/30 text-sm line-through ml-2">$3,900</span>
+         </div>
+         <button class="px-4 py-2 bg-crimson text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-darkred transition-colors" data-i18n="btn_buy">Buy Now</button>
+        </div>
+       </div>
+      </div>
+    </div>
+   </section>
+
+   <!-- Testimonials -->
+   <section id="testimonials" class="relative z-10 w-full py-20 px-6 bg-deepblue/20 border-y border-crimson/10">
+    <div class="max-w-5xl mx-auto">
+     <h2 class="text-3xl md:text-4xl text-crimson text-center mb-14" data-i18n="section_testimonials">Words from the Brotherhood</h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="p-6 border border-crimson/15 bg-obsidian/60 pulse-b">
+       <div class="star-rating mb-3">
+        ★★★★★
+       </div>
+       <p class="text-ivory/60 italic mb-4 leading-relaxed" data-i18n="testimonial1">"The pendant changed the trajectory of my life. Doors opened that I never knew existed."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-crimson to-darkred flex items-center justify-center text-obsidian font-bold text-sm">
+         VR
+        </div>
+        <div>
+         <div class="text-crimson text-sm font-semibold">
+          V. Rothschild
+         </div>
+         <div class="text-ivory/30 text-xs" data-i18n="testimonial1_role">
+          33rd Degree • Verified
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="p-6 border border-crimson/15 bg-obsidian/60 pulse-b" style="animation-delay:0.7s">
+       <div class="star-rating mb-3">
+        ★★★★★
+       </div>
+       <p class="text-ivory/60 italic mb-4 leading-relaxed" data-i18n="testimonial2">"The Codex revealed truths that no university could teach. Worth every cent of the investment."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-crimson to-darkred flex items-center justify-center text-obsidian font-bold text-sm">
+         MK
+        </div>
+        <div>
+         <div class="text-crimson text-sm font-semibold">
+          M. Knightley
+         </div>
+         <div class="text-ivory/30 text-xs" data-i18n="testimonial2_role">
+          Grand Master • Verified
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="p-6 border border-crimson/15 bg-obsidian/60 pulse-b" style="animation-delay:1.4s">
+       <div class="star-rating mb-3">
+        ★★★★★
+       </div>
+       <p class="text-ivory/60 italic mb-4 leading-relaxed" data-i18n="testimonial3">"I wear the Sigil Ring daily. Its presence commands respect in every room I enter."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-crimson to-darkred flex items-center justify-center text-obsidian font-bold text-sm">
+         DA
+        </div>
+        <div>
+         <div class="text-crimson text-sm font-semibold">
+          D. Arcanum
+         </div>
+         <div class="text-ivory/30 text-xs" data-i18n="testimonial3_role">
+          Inner Circle • Verified
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Bespoke Services Section -->
+   <section id="bespoke" class="relative z-10 w-full py-20 px-6 bespoke-section">
+    <div class="max-w-4xl mx-auto">
+     <div class="text-center mb-12">
+      <div class="inline-block px-4 py-2 border border-crimson/30 bg-obsidian/50 rounded-full mb-4 text-crimson text-xs uppercase tracking-wider" data-i18n="bespoke_badge">
+       Off-Market Services
+      </div>
+      <h2 class="text-3xl md:text-4xl text-crimson mb-4" data-i18n="bespoke_title">Bespoke Artifacts & Commissions</h2>
+      <p class="text-ivory/60 leading-relaxed" data-i18n="bespoke_desc">For those seeking items beyond our catalog. We work with a select circle of master craftsmen to create custom artifacts imbued with your personal sigils and intentions.</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <div class="p-6 border border-crimson/20 bg-obsidian/80 rounded-lg">
+       <i data-lucide="crown" class="w-8 h-8 text-crimson mb-4"></i>
+       <h3 class="text-lg text-crimson font-semibold mb-3" data-i18n="bespoke1_title">Custom Regalia</h3>
+       <p class="text-ivory/60 text-sm leading-relaxed" data-i18n="bespoke1_desc">Ceremonial garments and regalia crafted to your exact specifications and degree.</p>
+      </div>
+      <div class="p-6 border border-crimson/20 bg-obsidian/80 rounded-lg">
+       <i data-lucide="scroll" class="w-8 h-8 text-crimson mb-4"></i>
+       <h3 class="text-lg text-crimson font-semibold mb-3" data-i18n="bespoke2_title">Personal Grimoire</h3>
+       <p class="text-ivory/60 text-sm leading-relaxed" data-i18n="bespoke2_desc">Handwritten books of shadows bound in fine leather with your name in crimson ink.</p>
+      </div>
+      <div class="p-6 border border-crimson/20 bg-obsidian/80 rounded-lg">
+       <i data-lucide="sparkles" class="w-8 h-8 text-crimson mb-4"></i>
+       <h3 class="text-lg text-crimson font-semibold mb-3" data-i18n="bespoke3_title">Unique Talismans</h3>
+       <p class="text-ivory/60 text-sm leading-relaxed" data-i18n="bespoke3_desc">One-of-a-kind pieces created for your journey of enlightenment and power.</p>
+      </div>
+     </div>
+     <div class="text-center">
+      <button onclick="document.getElementById('bespoke-modal').classList.remove('hidden')" class="glow px-8 py-4 bg-gradient-to-r from-crimson to-darkred text-obsidian font-semibold tracking-widest uppercase text-sm hover:scale-105 transition-transform" data-i18n="btn_consultation">Request Consultation</button>
+      <p class="text-ivory/40 text-xs uppercase tracking-wider mt-4" data-i18n="bespoke_note">Our concierge will contact you within 24 hours</p>
+     </div>
+    </div>
+   </section>
+   <!-- Guarantee Section -->
+   <section class="relative z-10 w-full py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+     <div class="w-20 h-20 mx-auto mb-6 border-2 border-crimson rounded-full flex items-center justify-center">
+      <i data-lucide="shield" class="w-10 h-10 text-crimson"></i>
+     </div>
+     <h2 class="text-2xl md:text-3xl text-crimson mb-4" data-i18n="guarantee_title">Sacred Oath Guarantee</h2>
+     <p class="text-ivory/50 leading-relaxed mb-8" data-i18n="guarantee_desc">Every artifact is authenticated by the Grand Council. If your purchase does not meet your expectations within 30 days, we honor a full return — no questions asked. Your trust is our covenant.</p>
+     <div class="flex flex-wrap justify-center gap-6 text-sm text-ivory/40">
+      <div class="flex items-center gap-2">
+       <i data-lucide="check-circle" class="w-4 h-4 text-crimson"></i>
+       <span data-i18n="guarantee1">Free Worldwide Shipping</span>
+      </div>
+      <div class="flex items-center gap-2">
+       <i data-lucide="check-circle" class="w-4 h-4 text-crimson"></i>
+       <span data-i18n="guarantee2">Certificate of Authenticity</span>
+      </div>
+      <div class="flex items-center gap-2">
+       <i data-lucide="check-circle" class="w-4 h-4 text-crimson"></i>
+       <span data-i18n="guarantee3">Discreet Packaging</span>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- CTA Before Footer -->
+   <section class="relative z-10 w-full py-16 px-6 border-t border-crimson/10 bg-gradient-to-r from-deepblue/30 to-midnight/50">
+    <div class="max-w-4xl mx-auto text-center">
+     <h2 id="join-headline" class="text-2xl md:text-3xl text-crimson mb-4" data-i18n="join_headline">Ascend to the Inner Circle</h2>
+     <p id="join-subtext" class="text-ivory/60 mb-8 leading-relaxed" data-i18n="join_subtext">Those who seek power must prove their worth. Join our exclusive membership and gain access to restricted auctions, VIP previews, and private ceremonies.</p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button onclick="document.getElementById('join-modal').classList.remove('hidden')" class="glow px-8 py-4 bg-gradient-to-r from-crimson to-darkred text-obsidian font-semibold tracking-widest uppercase text-sm hover:scale-105 transition-transform" data-i18n="btn_join">Join Now</button>
+      <button onclick="document.getElementById('bespoke-modal').classList.remove('hidden')" class="px-8 py-4 border border-crimson/50 text-crimson tracking-widest uppercase text-sm hover:border-crimson hover:bg-crimson/5 transition-all" data-i18n="btn_bespoke">Request Bespoke Service</button>
+     </div>
+    </div>
+   </section>
+   <!-- Footer -->
+   <footer class="relative z-10 w-full py-12 px-6 border-t border-crimson/20 bg-midnight/50">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+     <div class="flex items-center gap-3">
+      <img src="logo-the-order.png" alt="The Order Logo" class="w-6 h-6 object-cover ">
+      <span class="nav-title text-crimson text-sm tracking-widest">THE ORDER © 2024</span>
+     </div>
+     <div class="flex items-center gap-6 text-ivory/30 text-xs uppercase tracking-wider">
+      <span>Novus Ordo Seclorum</span>
+      <span>•</span>
+      <span>Annuit Cœptis</span>
+     </div>
+    </div>
+   </footer>
+   <!-- Join Modal -->
+   <div id="join-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+    <div class="bg-gradient-to-b from-deepblue to-obsidian border border-crimson/30 rounded-lg max-w-md w-full p-8">
+     <div class="flex justify-between items-center mb-6">
+      <h3 class="text-2xl text-crimson font-semibold" data-i18n="modal_join_title">Request Initiation</h3>
+      <button onclick="document.getElementById('join-modal').classList.add('hidden')" class="text-ivory/50 hover:text-ivory">
+       <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+     </div>
+     <form onsubmit="handleJoinSubmit(event)">
+      <div class="mb-4">
+       <label class="text-ivory text-sm mb-2 block" data-i18n="label_name">Full Name</label>
+       <input type="text" class="w-full bg-obsidian border border-crimson/30 rounded px-3 py-2 text-ivory placeholder-ivory/30 focus:border-crimson focus:outline-none" placeholder="Your name" required>
+      </div>
+      <div class="mb-4">
+       <label class="text-ivory text-sm mb-2 block" data-i18n="label_email">Email Address</label>
+       <input type="email" class="w-full bg-obsidian border border-crimson/30 rounded px-3 py-2 text-ivory placeholder-ivory/30 focus:border-crimson focus:outline-none" placeholder="your@email.com" required>
+      </div>
+      <div class="mb-6">
+       <label class="text-ivory text-sm mb-2 block" data-i18n="label_message">Message</label>
+       <textarea class="w-full bg-obsidian border border-crimson/30 rounded px-3 py-2 text-ivory placeholder-ivory/30 focus:border-crimson focus:outline-none h-24" placeholder="Tell us about your journey..." required></textarea>
+      </div>
+      <button type="submit" class="w-full glow px-6 py-3 bg-gradient-to-r from-crimson to-darkred text-obsidian font-semibold tracking-widest uppercase text-sm hover:scale-105 transition-transform rounded" data-i18n="btn_submit">Submit Application</button>
+      <p class="text-ivory/40 text-xs text-center mt-4" data-i18n="modal_join_note">Your application will be reviewed by the Grand Council</p>
+     </form>
+    </div>
+   </div>
+   <!-- Bespoke Modal -->
+   <div id="bespoke-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+    <div class="bg-gradient-to-b from-deepblue to-obsidian border border-crimson/30 rounded-lg max-w-md w-full p-8">
+     <div class="flex justify-between items-center mb-6">
+      <h3 class="text-2xl text-crimson font-semibold" data-i18n="modal_bespoke_title">Bespoke Consultation</h3>
+      <button onclick="document.getElementById('bespoke-modal').classList.add('hidden')" class="text-ivory/50 hover:text-ivory">
+       <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+     </div>
+     <form onsubmit="handleBespokeSubmit(event)">
+      <div class="mb-4">
+       <label class="text-ivory text-sm mb-2 block" data-i18n="label_name">Full Name</label>
+       <input type="text" class="w-full bg-obsidian border border-crimson/30 rounded px-3 py-2 text-ivory placeholder-ivory/30 focus:border-crimson focus:outline-none" placeholder="Your name" required>
+      </div>
+      <div class="mb-4">
+       <label class="text-ivory text-sm mb-2 block" data-i18n="label_email">Email Address</label>
+       <input type="email" class="w-full bg-obsidian border border-crimson/30 rounded px-3 py-2 text-ivory placeholder-ivory/30 focus:border-crimson focus:outline-none" placeholder="your@email.com" required>
+      </div>
+      <div class="mb-6">
+       <label class="text-ivory text-sm mb-2 block" data-i18n="label_vision">Your Vision</label>
+       <textarea class="w-full bg-obsidian border border-crimson/30 rounded px-3 py-2 text-ivory placeholder-ivory/30 focus:border-crimson focus:outline-none h-24" placeholder="Describe your ideal artifact..." required></textarea>
+      </div>
+      <button type="submit" class="w-full glow px-6 py-3 bg-gradient-to-r from-crimson to-darkred text-obsidian font-semibold tracking-widest uppercase text-sm hover:scale-105 transition-transform rounded" data-i18n="btn_submit">Request Consultation</button>
+      <p class="text-ivory/40 text-xs text-center mt-4" data-i18n="modal_bespoke_note">Our artisans will contact you within 48 hours</p>
+     </form>
+    </div>
+   </div>
+  </div>
+  <script src="script.js"></script>
+ </body>
+</html>
