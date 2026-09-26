@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="web_standard" name="shell-type" />
+  <title>Atelier Forestier — Bois de Chauffage &amp; Brennholz</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <style>
+    @layer base {
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        overscroll-behavior: none;
+      }
+
+      main>:first-child {
+        margin-top: 0 !important;
+      }
+
+      main>:last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    [data-lang="de"] .lang-fr {
+      display: none !important;
+    }
+
+    [data-lang="fr"] .lang-de {
+      display: none !important;
+    }
+
+    /* Header scroll transitions */
+    #main-header-bar {
+      background-color: transparent;
+      border-color: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: none;
+    }
+
+    #main-header-bar.scrolled {
+      background-color: rgba(254, 249, 240, 0.95);
+      border-color: rgba(229, 220, 206, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px -2px rgba(24, 50, 40, 0.07);
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script
+    id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "tertiary-fixed-dim": "#ffb596", "on-error-container": "#93000a", "forest-dark": "#183228", "tertiary-fixed": "#ffdbcd", "on-secondary": "#ffffff", "on-tertiary-fixed-variant": "#7b2f04", "inverse-on-surface": "#f5f0e7", "background": "#fef9f0", "secondary-container": "#fdbf99", "on-surface": "#1d1c16", "on-secondary-fixed": "#311300", "outline-variant": "#c1c8c3", "charcoal": "#252A27", "on-primary": "#ffffff", "tertiary-container": "#732a00", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#002116", "tertiary": "#4f1a00", "on-tertiary-container": "#fb9261", "border-warm": "#E5DCCE", "secondary-fixed": "#ffdbc8", "secondary": "#825335", "surface-bright": "#fef9f0", "surface-container": "#f2ede4", "on-background": "#1d1c16", "on-secondary-fixed-variant": "#673c20", "on-primary-container": "#8eb6a4", "surface-container-highest": "#e7e2d9", "primary": "#0a3125", "on-error": "#ffffff", "primary-fixed": "#c3ecd8", "surface": "#fef9f0", "surface-variant": "#e7e2d9", "on-surface-variant": "#414844", "outline": "#717974", "on-primary-fixed-variant": "#294e3f", "surface-tint": "#416656", "surface-white": "#FFFFFF", "error": "#ba1a1a", "surface-container-high": "#ece8df", "secondary-fixed-dim": "#f7b994", "on-tertiary-fixed": "#360f00", "inverse-surface": "#32302b", "primary-fixed-dim": "#a7cfbd", "primary-container": "#23483a", "inverse-primary": "#a7cfbd", "error-container": "#ffdad6", "surface-container-low": "#f8f3ea", "on-secondary-container": "#794b2d", "on-tertiary": "#ffffff", "surface-dim": "#ded9d1", "forest-tint": "#E8EFEA", "wood-tint": "#F3ECE7" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-xl": "2.5rem", "space-sm": "0.5rem", "space-3xl": "6rem", "space-lg": "1.5rem", "gutter": "1.5rem", "space-xs": "0.25rem", "space-md": "1rem", "gutter-mobile": "1rem", "margin": "3rem", "space-2xl": "4rem", "margin-mobile": "1.25rem" }, fontFamily: { "label-sm": ["Manrope"], "eyebrow": ["Manrope"], "headline-md": ["Domine"], "numeric-step": ["Manrope"], "body-lg": ["Manrope"], "display-hero": ["Domine"], "headline-lg": ["Domine"], "headline-lg-mobile": ["Domine"], "label-lg": ["Manrope"], "body-sm": ["Manrope"], "body-md": ["Manrope"], "headline-sm": ["Domine"], "label-md": ["Manrope"], "display-hero-mobile": ["Domine"] }, fontSize: { "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }], "eyebrow": ["12px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }], "numeric-step": ["14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "800" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script>
+</head>
+
+<body
+  class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"
+  data-lang="fr">
+  <!-- Header principal (Top element) -->
+  <div class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent"
+    id="main-header-bar">
+    <header class="h-20 max-w-[1200px] mx-auto px-gutter flex items-center justify-between gap-space-md">
+      <div class="flex items-center gap-space-md shrink-0">
+        <a class="flex items-center gap-space-sm" data-path="accueil" href="#">
+          <img alt="Atelier Forestier Logo" class="h-32 w-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida/AEtjO1UghFG5w6OVMOiPQd8y3DF7YdcTQ-tvYWgiIkObKmeqv-o5KA1rDQzlaCZ7NTs4tI657KGdB0wv5OmfUnoItfw4RO7e0Yu-EL0KCGIzP4uuSpLGtPqb2sfoDdrnp9Yv2Yzd99v37qNr7g-8aJ1U4zFdMKpGiD4jeMlnbsV3wiKDpRC7Pjd_Whau9MOSX5z-W3cVN-Hexe4L_lyGYzYcQG7o2TX88lCsyakaybN3YerG6Yml1qU4RjVBbUg" />
+         
+        </a>
+      </div>
+      <!-- Navigation bilingue Desktop -->
+      <nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary font-bold">
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="nos-bois" href="#nos-bois">
+          <span class="lang-fr">Nos Bois</span>
+          <span class="lang-de">Unser Holz</span>
+        </a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="dimensions" href="#dimensions">
+          <span class="lang-fr">Dimensions</span>
+          <span class="lang-de">Formate</span>
+        </a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="qualite-et-sechage" href="#qualite-et-sechage">
+          <span class="lang-fr">Qualité &amp; Séchage</span>
+          <span class="lang-de">Qualität &amp; Trocknung</span>
+        </a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="livraison" href="#livraison">
+          <span class="lang-fr">Livraison</span>
+          <span class="lang-de">Lieferung</span>
+        </a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="avis-clients" href="#avis-clients">
+          <span class="lang-fr">Avis</span>
+          <span class="lang-de">Kundenstimmen</span>
+        </a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="faq" href="#faq">
+          <span class="lang-fr">FAQ</span>
+          <span class="lang-de">FAQ</span>
+        </a>
+      </nav>
+      <div class="flex items-center gap-space-md shrink-0">
+        <!-- Sélecteur élégant FR / DE dans le header Desktop & Tablette -->
+        <div
+          class="hidden sm:flex items-center bg-surface-container-high/90 backdrop-blur-sm rounded-full p-1 border border-border-warm shadow-inner">
+          <button
+            class="lang-btn-fr flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold transition-all bg-primary-container text-on-primary shadow-sm"
+            onclick="setLanguage('fr')" type="button">
+            <span>FR</span>
+          </button>
+          <button
+            class="lang-btn-de flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold transition-all text-on-surface-variant hover:text-charcoal"
+            onclick="setLanguage('de')" type="button">
+            <span>DE</span>
+          </button>
+        </div>
+        <a class="hidden md:inline-flex items-center gap-space-xs font-label-md text-label-md text-primary hover:text-forest-dark transition-colors px-space-sm py-space-xs"
+          href="tel:0478000000">
+          <span class="material-symbols-outlined text-[20px]">call</span>
+          <span>04 78 00 00 00</span>
+        </a>
+        <a class="hidden sm:inline-flex items-center justify-center bg-primary-container hover:bg-forest-dark text-on-primary font-label-lg text-label-lg px-space-lg py-space-sm rounded-lg shadow-sm transition-all duration-200"
+          data-path="demande-de-devis" href="#devis">
+          <span class="lang-fr">Demander un devis</span>
+          <span class="lang-de">Angebot anfordern</span>
+        </a>
+        <!-- Bouton burger mobile & tablette (< xl) -->
+        <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu principal"
+          class="xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg text-forest-dark hover:bg-surface-container/80 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+          id="mobile-menu-btn" type="button">
+          <span class="material-symbols-outlined text-[28px] transition-transform duration-200"
+            id="burger-icon">menu</span>
+          <span class="material-symbols-outlined text-[28px] hidden transition-transform duration-200"
+            id="close-icon">close</span>
+        </button>
+      </div>
+    </header>
+    <!-- Mobile Navigation Drawer / Dropdown -->
+    <div
+      class="hidden xl:hidden bg-surface/98 backdrop-blur-xl border-b border-border-warm/80 shadow-xl transition-all duration-300"
+      id="mobile-menu">
+      <div class="max-w-[1200px] mx-auto px-gutter py-space-lg flex flex-col gap-space-md">
+        <!-- Navigation Links -->
+        <nav class="flex flex-col space-y-1">
+          <a class="mobile-nav-link px-space-md py-2.5 rounded-lg text-charcoal hover:bg-forest-tint/60 font-headline-sm text-[17px] font-medium transition-colors"
+            href="#nos-bois">
+            <span class="lang-fr">Nos Bois</span>
+            <span class="lang-de">Unser Holz</span>
+          </a>
+          <a class="mobile-nav-link px-space-md py-2.5 rounded-lg text-charcoal hover:bg-forest-tint/60 font-headline-sm text-[17px] font-medium transition-colors"
+            href="#dimensions">
+            <span class="lang-fr">Dimensions</span>
+            <span class="lang-de">Formate</span>
+          </a>
+          <a class="mobile-nav-link px-space-md py-2.5 rounded-lg text-charcoal hover:bg-forest-tint/60 font-headline-sm text-[17px] font-medium transition-colors"
+            href="#qualite-et-sechage">
+            <span class="lang-fr">Qualité &amp; Séchage</span>
+            <span class="lang-de">Qualität &amp; Trocknung</span>
+          </a>
+          <a class="mobile-nav-link px-space-md py-2.5 rounded-lg text-charcoal hover:bg-forest-tint/60 font-headline-sm text-[17px] font-medium transition-colors"
+            href="#livraison">
+            <span class="lang-fr">Livraison</span>
+            <span class="lang-de">Lieferung</span>
+          </a>
+          <a class="mobile-nav-link px-space-md py-2.5 rounded-lg text-charcoal hover:bg-forest-tint/60 font-headline-sm text-[17px] font-medium transition-colors"
+            href="#avis-clients">
+            <span class="lang-fr">Avis clients</span>
+            <span class="lang-de">Kundenstimmen</span>
+          </a>
+          <a class="mobile-nav-link px-space-md py-2.5 rounded-lg text-charcoal hover:bg-forest-tint/60 font-headline-sm text-[17px] font-medium transition-colors"
+            href="#faq">
+            <span class="lang-fr">Questions fréquentes</span>
+            <span class="lang-de">FAQ</span>
+          </a>
+        </nav>
+        <div class="h-px bg-border-warm my-1"></div>
+        <!-- Language Switcher & Direct Actions in Mobile Menu -->
+        <div class="flex items-center justify-between py-1">
+          <span class="text-xs uppercase tracking-wider text-on-surface-variant font-bold">
+            <span class="lang-fr">Langue / Sprache</span>
+            <span class="lang-de">Sprache / Langue</span>
+          </span>
+          <div class="flex items-center bg-surface-container rounded-full p-1 border border-border-warm shadow-inner">
+            <button
+              class="lang-btn-fr flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold transition-all bg-primary-container text-on-primary shadow-sm"
+              onclick="setLanguage('fr')" type="button">
+              <span>FR</span>
+            </button>
+            <button
+              class="lang-btn-de flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold transition-all text-on-surface-variant hover:text-charcoal"
+              onclick="setLanguage('de')" type="button">
+              <span>DE</span>
+            </button>
+          </div>
+        </div>
+        <a class="mobile-nav-link flex items-center justify-center gap-space-xs text-primary font-label-md text-label-md py-2 rounded-lg bg-surface-container-low border border-border-warm"
+          href="tel:0478000000">
+          <span class="material-symbols-outlined text-[20px]">call</span>
+          <span>04 78 00 00 00</span>
+        </a>
+        <a class="mobile-nav-link inline-flex items-center justify-center bg-primary-container hover:bg-forest-dark text-on-primary font-label-lg text-label-lg py-3 rounded-lg shadow-sm text-center transition-colors"
+          href="#devis">
+          <span class="lang-fr">Demander un devis gratuit</span>
+          <span class="lang-de">Kostenloses Angebot anfordern</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <main class="w-full pt-20 bg-background min-h-screen">
+    <div class="flex flex-col w-full">
+      <!-- 1. HERO SECTION WITH AIRY TRANSLUCENT OVERLAY & VIVID FOREST DEPTH -->
+      <section class="w-full relative overflow-hidden bg-cover bg-center"
+        style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1V9uFe4jyl6ZKijoU0ZEod0YxWk21VALJyOAm5TQV24VoW7uyyyUiwaLZkIp1Q_WCqW9Tz5FFemnk_3fZ-Na07im7zCmkYTIy-tLarEHmXS7saNdsTkLJ8e8NYbLGZesn4hkoVaw61dYobYtx6IFd5Xy-DUnqITd4ckuAtHKEu3Q8_EeZ5fDhCgl8o_IszrZTomBJepkijngGqAihRpb-lQVSL2An9QzGUBskQsEdBJVKeXkTsWGJFGVuS8');">
+        <!-- Calque de dégradé aéré et délicat laissant transparaître la forêt avec clarté et profondeur -->
+        <div class="absolute inset-0 pointer-events-none z-0"
+          style="background: linear-gradient(to right, rgba(254, 249, 240, 0.72) 0%, rgba(254, 249, 240, 0.45) 50%, rgba(254, 249, 240, 0.18) 100%);">
+        </div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-0 pointer-events-none">
+        </div>
+        <div class="max-w-[1200px] mx-auto px-gutter pt-space-2xl pb-space-3xl relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+            <!-- Colonne Gauche (7 cols) -->
+            <div class="lg:col-span-7 flex flex-col items-start">
+              <div
+                class="inline-flex items-center gap-space-xs font-eyebrow text-eyebrow uppercase text-secondary tracking-widest bg-surface/90 backdrop-blur-md px-space-md py-space-xs rounded-full mb-space-md border border-border-warm shadow-xs">
+                <span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span>
+                <span class="lang-fr">Bois de chauffage • Qualité sélectionnée • Livraison locale</span>
+                <span class="lang-de">Premium Brennholz • Geprüfte Güteklasse • Lokale Lieferung</span>
+              </div>
+              <h1 class="font-display-hero text-display-hero text-charcoal tracking-tight max-w-xl drop-shadow-xs">
+                <span class="lang-fr">Votre chauffage commence par un bois de qualité.</span>
+                <span class="lang-de">Ihre Behaglichkeit beginnt mit Qualitätsbrennholz.</span>
+              </h1>
+              <p
+                class="font-body-lg text-body-lg text-charcoal/90 mt-space-md max-w-xl leading-relaxed drop-shadow-xs font-medium">
+                <span class="lang-fr">Nous vous proposons du bois de chauffage adapté à votre foyer et à vos exigences.
+                  Essences de feuillus durs soigneusement séchées et calibrées, livrées directement chez vous.</span>
+                <span class="lang-de">Wir liefern ofenfertiges, kammer- und luftgetrocknetes Hartholz direkt zu Ihnen
+                  nach Hause. Maßgenau gespalten, sauber gelagert und optimal auf Ihren Kamin oder Kaminofen
+                  abgestimmt.</span>
+              </p>
+              <!-- Groupe de boutons -->
+              <div class="flex flex-wrap items-center gap-space-md mt-space-xl">
+                <a class="inline-flex items-center justify-center bg-primary-container hover:bg-forest-dark text-on-primary font-label-lg text-label-lg px-space-xl py-3.5 rounded-lg shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                  href="#devis">
+                  <span class="lang-fr">Demander un devis gratuit</span>
+                  <span class="lang-de">Kostenloses Angebot anfordern</span>
+                </a>
+                <a class="inline-flex items-center justify-center bg-surface/95 hover:bg-forest-tint text-primary font-label-lg text-label-lg px-space-lg py-3.5 rounded-lg transition-colors border border-primary/30 backdrop-blur-sm shadow-xs"
+                  href="#nos-bois">
+                  <span class="lang-fr">Découvrir nos bois</span>
+                  <span class="lang-de">Holzsorten entdecken</span>
+                </a>
+               
+              </div>
+              <!-- Bandeau de réassurance / Trust strip -->
+              <div
+                class="grid grid-cols-2 sm:grid-cols-4 gap-space-md mt-space-2xl pt-space-lg bg-surface/95 backdrop-blur-md rounded-xl p-space-md w-full border border-border-warm/90 shadow-sm">
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5"
+                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  <span class="font-label-md text-label-md text-on-surface">
+                    <span class="lang-fr">Feuillus durs sélectionnés</span>
+                    <span class="lang-de">100% Edellaubholz</span>
+                  </span>
+                </div>
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5"
+                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  <span class="font-label-md text-label-md text-on-surface">
+                    <span class="lang-fr">Bois fendu &amp; séché &lt; 20%</span>
+                    <span class="lang-de">Gespalten &amp; trocken &lt; 20%</span>
+                  </span>
+                </div>
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5"
+                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  <span class="font-label-md text-label-md text-on-surface">
+                    <span class="lang-fr">Livraison propre à domicile</span>
+                    <span class="lang-de">Saubere Anlieferung</span>
+                  </span>
+                </div>
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5"
+                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  <span class="font-label-md text-label-md text-on-surface">
+                    <span class="lang-fr">Conseil personnalisé</span>
+                    <span class="lang-de">Individuelle Fachberatung</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- Colonne Droite (5 cols) -->
+            <div class="lg:col-span-5 relative mt-space-xl lg:mt-0">
+              <div class="absolute -bottom-3 -right-3 w-full h-full bg-primary-container/20 rounded-xl"></div>
+              <div class="relative bg-surface rounded-xl overflow-hidden shadow-xl border border-border-warm/70">
+                <img alt="Atelier Forestier - Bûches de feuillus durs séchées et parfaitement empilées"
+                  class="w-full h-[480px] object-cover object-center"
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1VPY2rGPXkJpOK6M4EZEQncRQt6xzmbQNbGvCJArBNCxxbdc9m4UUXGpzZLCA2MZ2BFT0vp36Zko9hpv_PPSPqxQsF3sfOxuMCxdSrBBjvG_obVSbif8PGHQKckvbcrtDjKc3K_pgjQ5bzU-mko51uUc4OfWEgK0Fi8zO0_xVbOOrmtAc_CcLvvN82DRVbLVUy1RSb4LKRnJmqSm7YJ65xhtyVUNvPiC2IYKb5ugv7d62Vamk23yGKAusVH" />
+                <!-- Badges discrets superposés -->
+                <div class="absolute top-space-md left-space-md flex flex-col gap-space-xs">
+                  <div
+                    class="bg-primary-container text-on-primary font-label-sm text-label-sm px-space-md py-1.5 rounded-full shadow-sm flex items-center gap-1.5 backdrop-blur-sm bg-opacity-95">
+                    <span class="material-symbols-outlined text-[15px]"
+                      style="font-variation-settings: 'FILL' 1;">verified</span>
+                    <span class="lang-fr">Bois Sec Contrôlé &lt; 20%</span>
+                    <span class="lang-de">Restfeuchte geprüft &lt; 20%</span>
+                  </div>
+                  <div
+                    class="bg-secondary text-on-secondary font-label-sm text-label-sm px-space-md py-1.5 rounded-full shadow-sm flex items-center gap-1.5 backdrop-blur-sm bg-opacity-95">
+                    <span class="material-symbols-outlined text-[15px]">local_shipping</span>
+                    <span class="lang-fr">Livraison soignée à domicile</span>
+                    <span class="lang-de">Schonende Lieferung nach Hause</span>
+                  </div>
+                </div>
+                <!-- Fiche technique flottante basse -->
+                <div
+                  class="absolute bottom-space-md left-space-md right-space-md bg-surface/95 backdrop-blur-md p-space-md rounded-lg shadow-md flex items-center justify-between border border-border-warm">
+                  <div>
+                    <p class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">
+                      <span class="lang-fr">Origine locale</span>
+                      <span class="lang-de">Regionale Herkunft</span>
+                    </p>
+                    <p class="font-headline-sm text-headline-sm text-charcoal">
+                      <span class="lang-fr">Feuillus Classe A1</span>
+                      <span class="lang-de">Hartholz Güteklasse A1</span>
+                    </p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+                      <span class="lang-fr">Pouvoir calorifique</span>
+                      <span class="lang-de">Heizwert</span>
+                    </p>
+                    <p class="font-headline-sm text-headline-sm text-primary">~2000 kWh / Raummeter</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 2. SÉLECTION DES ESSENCES -->
+      <section class="w-full bg-surface-white py-space-3xl" id="nos-bois">
+        <div class="max-w-[1200px] mx-auto px-gutter">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-2xl">
+            <div class="max-w-2xl">
+              <span class="font-eyebrow text-eyebrow uppercase text-secondary tracking-widest">
+                <span class="lang-fr">Gamme &amp; Rendement</span>
+                <span class="lang-de">Sortiment &amp; Heizleistung</span>
+              </span>
+              <h2 class="font-headline-lg text-headline-lg text-charcoal tracking-tight mt-space-xs">
+                <span class="lang-fr">Choisissez le bois adapté à votre installation</span>
+                <span class="lang-de">Wählen Sie das passende Holz für Ihre Feuerstätte</span>
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+                <span class="lang-fr">Chaque foyer requiert une dynamique thermique spécifique. Nous sélectionnons
+                  exclusivement des essences nobles de feuillus durs, séchées naturellement sous abri ventilé.</span>
+                <span class="lang-de">Jede Feuerstätte hat eigene thermische Eigenschaften. Wir führen ausschließlich
+                  reines Edellaubholz (Eiche, Buche, Hainbuche), schonend getrocknet für maximalen Wirkungsgrad.</span>
+              </p>
+            </div>
+            <div
+              class="hidden md:flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-space-md py-space-sm rounded-lg border border-border-warm">
+              <span class="material-symbols-outlined text-secondary text-[18px]">info</span>
+              <span class="lang-fr">100% feuillus durs de forêts durables</span>
+              <span class="lang-de">100% Hartholz aus nachhaltiger Waldwirtschaft</span>
+            </div>
+          </div>
+          <!-- Grille des 3 essences -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+            <!-- Chêne / Eiche -->
+            <div
+              class="bg-surface rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group hover:shadow-md transition-all duration-300 border border-border-warm">
+              <div>
+                <div class="relative h-56 overflow-hidden">
+                  <img alt="Bûches de chêne fendu de haute qualité"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="https://lh3.googleusercontent.com/aida/AEtjO1V4WuTL66y7IFX6lK39dejRcv5f2YC6th7JiN3ftzeV1rcvGoGeRMMcBbqfsSc9R5KCYd4krNvqVQIz_TxYWYLNkGhTK0UoRtb4kjdNHbeIoEk2NVFkbTLTu_0jizJLTgefW2R69uV_5MP0SxllaDrurw0FwkNnXxjbYx9uqo-DVLYT7pr4BO5Z0CEaKin1OjCCPNIR222Z_0PzW0_MbwpBoEcmLLs_L9rudEfhF_tL0axtWxjK5uRwi-c" />
+                  <div
+                    class="absolute top-space-sm right-space-sm bg-surface/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full font-semibold">
+                    <span class="lang-fr">Densité maximale</span>
+                    <span class="lang-de">Maximale Dichte</span>
+                  </div>
+                </div>
+                <div class="p-space-lg">
+                  <div class="flex items-baseline justify-between mb-space-xs">
+                    <h3 class="font-headline-md text-headline-md text-charcoal">
+                      <span class="lang-fr">Chêne</span>
+                      <span class="lang-de">Eiche</span>
+                    </h3>
+                    <span class="font-body-sm text-body-sm italic text-secondary">Quercus robur</span>
+                  </div>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+                    <span class="lang-fr">Combustion lente, braises très longue durée et pouvoir calorifique
+                      exceptionnel. Le choix roi pour une autonomie prolongée.</span>
+                    <span class="lang-de">Langsame und ruhige Verbrennung, anhaltende Glut und sehr hoher Brennwert. Die
+                      ideale Wahl für langanhaltende Wärme und Nachtbetrieb.</span>
+                  </p>
+                  <div
+                    class="space-y-space-xs py-space-sm mb-space-md bg-surface-container-low rounded-lg p-space-sm text-body-sm font-body-sm">
+                    <div class="flex items-center justify-between">
+                      <span class="text-on-surface-variant"><span class="lang-fr">Rendement thermique :</span><span
+                          class="lang-de">Heizwert :</span></span>
+                      <span class="font-label-md text-label-md text-primary"><span class="lang-fr">Très élevé
+                          (★★★★★)</span><span class="lang-de">Sehr hoch (★★★★★)</span></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-on-surface-variant"><span class="lang-fr">Type de flamme :</span><span
+                          class="lang-de">Flammenbild :</span></span>
+                      <span class="font-label-md text-label-md text-charcoal"><span class="lang-fr">Calme &amp;
+                          durable</span><span class="lang-de">Ruhig &amp; gleichmäßig</span></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-on-surface-variant"><span class="lang-fr">Usage idéal :</span><span
+                          class="lang-de">Einsatzbereich :</span></span>
+                      <span class="font-label-md text-label-md text-charcoal"><span class="lang-fr">Poêles, Inserts,
+                          Nuit</span><span class="lang-de">Kaminöfen, Heizeinsätze</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="px-space-lg pb-space-lg pt-0">
+                <a class="w-full inline-flex items-center justify-center bg-primary hover:bg-forest-dark text-on-primary font-label-md text-label-md py-3 rounded-lg transition-colors"
+                  href="#devis">
+                  <span class="lang-fr">Demander un prix pour le Chêne</span>
+                  <span class="lang-de">Preis für Eichenholz anfragen</span>
+                </a>
+              </div>
+            </div>
+            <!-- Hêtre / Buche -->
+            <div
+              class="bg-surface rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group hover:shadow-md transition-all duration-300 border border-border-warm">
+              <div>
+                <div class="relative h-56 overflow-hidden">
+                  <img alt="Bûches de hêtre sec bien fendues"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="https://lh3.googleusercontent.com/aida/AEtjO1VPY2rGPXkJpOK6M4EZEQncRQt6xzmbQNbGvCJArBNCxxbdc9m4UUXGpzZLCA2MZ2BFT0vp36Zko9hpv_PPSPqxQsF3sfOxuMCxdSrBBjvG_obVSbif8PGHQKckvbcrtDjKc3K_pgjQ5bzU-mko51uUc4OfWEgK0Fi8zO0_xVbOOrmtAc_CcLvvN82DRVbLVUy1RSb4LKRnJmqSm7YJ65xhtyVUNvPiC2IYKb5ugv7d62Vamk23yGKAusVH" />
+                  <div
+                    class="absolute top-space-sm right-space-sm bg-surface/90 backdrop-blur-sm text-secondary font-label-sm text-label-sm px-2.5 py-1 rounded-full font-semibold">
+                    <span class="lang-fr">Flamme lumineuse</span>
+                    <span class="lang-de">Helles Flammenbild</span>
+                  </div>
+                </div>
+                <div class="p-space-lg">
+                  <div class="flex items-baseline justify-between mb-space-xs">
+                    <h3 class="font-headline-md text-headline-md text-charcoal">
+                      <span class="lang-fr">Hêtre</span>
+                      <span class="lang-de">Buche</span>
+                    </h3>
+                    <span class="font-body-sm text-body-sm italic text-secondary">Fagus sylvatica</span>
+                  </div>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+                    <span class="lang-fr">Flamme vive, claire et sans projections. Allumage franc dégageant une douce
+                      odeur agréable. Très haute montée en température.</span>
+                    <span class="lang-de">Klares, funkenarmes Feuer mit herrlich aromatischem Duft. Schnelle und
+                      kräftige Hitzeentwicklung – der beliebteste Allrounder für Wohnraumkamine.</span>
+                  </p>
+                  <div
+                    class="space-y-space-xs py-space-sm mb-space-md bg-surface-container-low rounded-lg p-space-sm text-body-sm font-body-sm">
+                    <div class="flex items-center justify-between">
+                      <span class="text-on-surface-variant"><span class="lang-fr">Rendement thermique :</span><span
+                          class="lang-de">Heizwert :</span></span>
+                      <span class="font-label-md text-label-md text-primary"><span class="lang-fr">Élevé
+                          (★★★★☆)</span><span class="lang-de">Sehr hoch (★★★★☆)</span></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-on-surface-variant"><span class="lang-fr">Type de flamme :</span><span
+                          class="lang-de">Flammenbild :</span></span>
+                      <span class="font-label-md text-label-md text-charcoal"><span class="lang-fr">Vive &amp;
+                          claire</span><span class="lang-de">Hell &amp; lebendig</span></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-on-surface-variant"><span class="lang-fr">Usage idéal :</span><span
+                          class="lang-de">Einsatzbereich :</span></span>
+                      <span class="font-label-md text-label-md text-charcoal"><span class="lang-fr">Foyers ouverts,
+                          Vitres</span><span class="lang-de">Sichtscheiben &amp; Kaminöfen</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="px-space-lg pb-space-lg pt-0">
+                <a class="w-full inline-flex items-center justify-center bg-primary hover:bg-forest-dark text-on-primary font-label-md text-label-md py-3 rounded-lg transition-colors"
+                  href="#devis">
+                  <span class="lang-fr">Demander un prix pour le Hêtre</span>
+                  <span class="lang-de">Preis für Buchenholz anfragen</span>
+                </a>
+              </div>
+            </div>
+            <!-- Charme / Hainbuche -->
+            <div
+              class="bg-surface rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group hover:shadow-md transition-all duration-300 border border-border-warm">
+              <div>
+                <div class="relative h-56 overflow-hidden">
+                  <img alt="Bûches de charme très denses"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="https://lh3.googleusercontent.com/aida/AEtjO1V4WuTL66y7IFX6lK39dejRcv5f2YC6th7JiN3ftzeV1rcvGoGeRMMcBbqfsSc9R5KCYd4krNvqVQIz_TxYWYLNkGhTK0UoRtb4kjdNHbeIoEk2NVFkbTLTu_0jizJLTgefW2R69uV_5MP0SxllaDrurw0FwkNnXxjbYx9uqo-DVLYT7pr4BO5Z0CEaKin1OjCCPNIR222Z_0PzW0_MbwpBoEcmLLs_L9rudEfhF_tL0axtWxjK5uRwi-c" />
+                  <div
+                    class="absolute top-space-sm right-space-sm bg-surface/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full font-semibold">
+                    <span class="lang-fr">Pouvoir calorifique suprême</span>
+                    <span class="lang-de">Höchste Energiedichte</span>
+                  </div>
+                </div>
+                <div class="p-space-lg">
+                  <div class="flex items-baseline justify-between mb-space-xs">
+                    <h3 class="font-headline-md text-headline-md text-charcoal">
+                      <span class="lang-fr">Charme</span>
+                      <span class="lang-de">Hainbuche / Weißbuche</span>
+                    </h3>
+                    <span class="font-body-sm text-body-sm italic text-secondary">Carpinus betulus</span>
+                  </div>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+                    <span class="lang-fr">Le bois le plus lourd et le plus dense de nos forêts. Donne des braises
+                      ardentes qui durent des heures sans éclats.</span>
+                    <span class="lang-de">Das schwerste und dichteste Brennholz unserer Region. Erzeugt lodernde,
+                      ausdauernde Glutbetten ohne Spritzer oder Funkenflug.</span>
+                  </p>
+                  <div
+                    class="space-y-space-xs py-space-sm mb-space-md bg-surface-container-low rounded-lg p-space-sm text-body-sm font-body-sm">
+                    <div class="flex items-center justify-between">
+                      <span class="text-on-surface-variant"><span class="lang-fr">Rendement thermique :</span><span
+                          class="lang-de">Heizwert :</span></span>
+                      <span class="font-label-md text-label-md text-primary"><span class="lang-fr">Inégalé
+                          (★★★★★)</span><span class="lang-de">Spitzenklasse (★★★★★)</span></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-on-surface-variant"><span class="lang-fr">Type de flamme :</span><span
+                          class="lang-de">Flammenbild :</span></span>
+                      <span class="font-label-md text-label-md text-charcoal"><span class="lang-fr">Régulière &amp;
+                          compacte</span><span class="lang-de">Gleichmäßig &amp; kompakt</span></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-on-surface-variant"><span class="lang-fr">Usage idéal :</span><span
+                          class="lang-de">Einsatzbereich :</span></span>
+                      <span class="font-label-md text-label-md text-charcoal"><span class="lang-fr">Grandes pièces,
+                          Inserts</span><span class="lang-de">Große Räume &amp; Kachelöfen</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="px-space-lg pb-space-lg pt-0">
+                <a class="w-full inline-flex items-center justify-center bg-primary hover:bg-forest-dark text-on-primary font-label-md text-label-md py-3 rounded-lg transition-colors"
+                  href="#devis">
+                  <span class="lang-fr">Demander un prix pour le Charme</span>
+                  <span class="lang-de">Preis für Hainbuche anfragen</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 3. DIMENSIONS & FORMATS DE BÛCHES -->
+      <section class="w-full bg-surface-container-low py-space-3xl" id="dimensions">
+        <div class="max-w-[1200px] mx-auto px-gutter">
+          <div class="text-center max-w-2xl mx-auto mb-space-2xl">
+            <span class="font-eyebrow text-eyebrow uppercase text-secondary tracking-widest">
+              <span class="lang-fr">Calibrage Précis</span>
+              <span class="lang-de">Exakter Zuschnitt</span>
+            </span>
+            <h2 class="font-headline-lg text-headline-lg text-charcoal tracking-tight mt-space-xs">
+              <span class="lang-fr">Des dimensions adaptées à votre foyer</span>
+              <span class="lang-de">Passgenaue Scheitlängen für Ihren Ofen</span>
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+              <span class="lang-fr">Un bon dimensionnement assure un tirage optimal, une montée rapide en température et
+                une combustion propre sans encrasser vos vitres.</span>
+              <span class="lang-de">Die richtige Scheitlänge garantiert optimale Luftzirkulation, saubere Verbrennung
+                und klare Scheiben ohne Rußbildung.</span>
+            </p>
+          </div>
+          <!-- Sélecteur Didactique 4 Formats -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-xl">
+            <!-- 25 cm -->
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between border border-border-warm">
+              <div>
+                <div
+                  class="w-12 h-12 rounded-lg bg-forest-tint flex items-center justify-center text-primary mb-space-md">
+                  <span class="material-symbols-outlined text-[26px]">straighten</span>
+                </div>
+                <div class="flex items-baseline gap-space-xs">
+                  <span class="font-display-hero text-headline-lg text-charcoal">25</span>
+                  <span class="font-headline-sm text-headline-sm text-secondary">cm</span>
+                </div>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal mt-space-xs">
+                  <span class="lang-fr">Poêles étanches &amp; compacts</span>
+                  <span class="lang-de">Kompaktöfen &amp; Schwedenöfen</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                  <span class="lang-fr">Conçu spécifiquement pour les poêles à haut rendement récents et les chambres de
+                    combustion réduites.</span>
+                  <span class="lang-de">Speziell für moderne Niedrigenergie-Kaminöfen mit kleiner Brennkammer
+                    konzipiert.</span>
+                </p>
+              </div>
+              <div
+                class="mt-space-md pt-space-md bg-surface-container-low rounded-lg p-space-sm text-label-sm font-label-sm text-primary">
+                <span class="lang-fr">Rendement max dans petits volumes</span>
+                <span class="lang-de">Max. Wirkungsgrad bei kleinen Brennräumen</span>
+              </div>
+            </div>
+            <!-- 33 cm -->
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between relative ring-2 ring-primary">
+              <div
+                class="absolute -top-3 right-space-md bg-secondary text-on-secondary font-label-sm text-label-sm px-space-sm py-0.5 rounded-full font-bold">
+                <span class="lang-fr">Standard universel</span>
+                <span class="lang-de">Universal-Standard</span>
+              </div>
+              <div>
+                <div
+                  class="w-12 h-12 rounded-lg bg-forest-tint flex items-center justify-center text-primary mb-space-md">
+                  <span class="material-symbols-outlined text-[26px]">square_foot</span>
+                </div>
+                <div class="flex items-baseline gap-space-xs">
+                  <span class="font-display-hero text-headline-lg text-charcoal">33</span>
+                  <span class="font-headline-sm text-headline-sm text-secondary">cm</span>
+                </div>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal mt-space-xs">
+                  <span class="lang-fr">Le standard polyvalent</span>
+                  <span class="lang-de">Der beliebte Standard</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                  <span class="lang-fr">La longueur la plus demandée. Convient à plus de 80% des poêles à bois et
+                    inserts moyens.</span>
+                  <span class="lang-de">Die am meisten nachgefragte Länge. Passt in über 80% aller gängigen Kamin- und
+                    Kachelöfen.</span>
+                </p>
+              </div>
+              <div
+                class="mt-space-md pt-space-md bg-surface-container-low rounded-lg p-space-sm text-label-sm font-label-sm text-primary">
+                <span class="lang-fr">Manipulation aisée &amp; stockage facile</span>
+                <span class="lang-de">Handlich zu tragen &amp; leicht zu stapeln</span>
+              </div>
+            </div>
+            <!-- 40 cm -->
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between border border-border-warm">
+              <div>
+                <div
+                  class="w-12 h-12 rounded-lg bg-forest-tint flex items-center justify-center text-primary mb-space-md">
+                  <span class="material-symbols-outlined text-[26px]">fit_screen</span>
+                </div>
+                <div class="flex items-baseline gap-space-xs">
+                  <span class="font-display-hero text-headline-lg text-charcoal">40</span>
+                  <span class="font-headline-sm text-headline-sm text-secondary">cm</span>
+                </div>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal mt-space-xs">
+                  <span class="lang-fr">Inserts intermédiaires</span>
+                  <span class="lang-de">Mittlere Heizeinsätze</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                  <span class="lang-fr">Idéal pour les cheminées fermées et foyers intermédiaires cherchant une
+                    autonomie accrue.</span>
+                  <span class="lang-de">Hervorragend für Kamineinsätze mittlerer Baugröße mit höherem
+                    Wärmebedarf.</span>
+                </p>
+              </div>
+              <div
+                class="mt-space-md pt-space-md bg-surface-container-low rounded-lg p-space-sm text-label-sm font-label-sm text-primary">
+                <span class="lang-fr">Excellente tenue au feu</span>
+                <span class="lang-de">Hohe Glutdauer &amp; Komfort</span>
+              </div>
+            </div>
+            <!-- 50 cm -->
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between border border-border-warm">
+              <div>
+                <div
+                  class="w-12 h-12 rounded-lg bg-forest-tint flex items-center justify-center text-primary mb-space-md">
+                  <span class="material-symbols-outlined text-[26px]">view_agenda</span>
+                </div>
+                <div class="flex items-baseline gap-space-xs">
+                  <span class="font-display-hero text-headline-lg text-charcoal">50</span>
+                  <span class="font-headline-sm text-headline-sm text-secondary">cm</span>
+                </div>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal mt-space-xs">
+                  <span class="lang-fr">Grandes cheminées &amp; chaudières</span>
+                  <span class="lang-de">Große Kamine &amp; Holzvergaser</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                  <span class="lang-fr">Parfait pour les larges foyers ouverts traditionnels, les grands inserts et les
+                    chaudières à bûches.</span>
+                  <span class="lang-de">Ideal für offene Feuerstellen, rustikale Kamine und
+                    Zentralheizungskessel.</span>
+                </p>
+              </div>
+              <div
+                class="mt-space-md pt-space-md bg-surface-container-low rounded-lg p-space-sm text-label-sm font-label-sm text-primary">
+                <span class="lang-fr">Pour de longues flambées hivernales</span>
+                <span class="lang-de">Perfekt für langanhaltende Winterfeuer</span>
+              </div>
+            </div>
+          </div>
+          <!-- Bloc informatif conseil format -->
+          <div
+            class="bg-surface rounded-xl p-space-xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-lg border border-border-warm">
+            <div class="flex items-start gap-space-md">
+              <div
+                class="w-12 h-12 rounded-full bg-secondary-fixed/50 flex items-center justify-center shrink-0 text-secondary">
+                <span class="material-symbols-outlined text-[24px]">help_outline</span>
+              </div>
+              <div>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal">
+                  <span class="lang-fr">Vous hésitez sur le format idéal pour votre installation ?</span>
+                  <span class="lang-de">Unsicher bezüglich der richtigen Scheitlänge?</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  <span class="lang-fr">Indiquez-nous la marque et le modèle de votre poêle ou les dimensions utiles de
+                    votre foyer. Nous vous recommanderons la coupe idéale.</span>
+                  <span class="lang-de">Nennen Sie uns einfach den Ofentyp oder die Innenmaße Ihres Brennraums. Wir
+                    beraten Sie gern persönlich.</span>
+                </p>
+              </div>
+            </div>
+            <a class="shrink-0 inline-flex items-center gap-space-xs bg-primary hover:bg-forest-dark text-on-primary font-label-md text-label-md px-space-lg py-3 rounded-lg transition-colors"
+              href="#devis">
+              <span>
+                <span class="lang-fr">Demander conseil</span>
+                <span class="lang-de">Beratung anfordern</span>
+              </span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- 4. ENGAGEMENT QUALITÉ & SÉCHAGE -->
+      <section class="w-full bg-surface-white py-space-3xl" id="qualite-et-sechage">
+        <div class="max-w-[1200px] mx-auto px-gutter">
+          <div class="max-w-2xl mb-space-2xl">
+            <span class="font-eyebrow text-eyebrow uppercase text-secondary tracking-widest">
+              <span class="lang-fr">Exigence Sylvicole</span>
+              <span class="lang-de">Forstwirtschaftliche Sorgfalt</span>
+            </span>
+            <h2 class="font-headline-lg text-headline-lg text-charcoal tracking-tight mt-space-xs">
+              <span class="lang-fr">Un bon chauffage commence par un bois bien préparé</span>
+              <span class="lang-de">Ein gutes Feuer beginnt mit gut vorbereitetem Holz</span>
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+              <span class="lang-fr">Chaque stère qui quitte notre parc de stockage a suivi un protocole rigoureux de
+                coupe, séchage et contrôle pour garantir un combustible prêt à l'emploi.</span>
+              <span class="lang-de">Jeder Raummeter aus unserem Lager durchläuft einen strengen Trocknungs- und
+                Qualitätszyklus – für sofort einsatzbereites Premium-Brennholz.</span>
+            </p>
+          </div>
+          <!-- 4 Étapes visuelles du processus -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg mb-space-3xl">
+            <!-- Étape 1 -->
+            <div
+              class="bg-surface-container-low rounded-xl p-space-lg relative flex flex-col justify-between border border-border-warm/70">
+              <div class="w-full h-1 bg-secondary rounded-full mb-space-md"></div>
+              <div>
+                <span class="font-numeric-step text-numeric-step text-primary">01. <span
+                    class="lang-fr">SÉLECTION</span><span class="lang-de">AUSWAHL</span></span>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal mt-space-xs">
+                  <span class="lang-fr">Forêts durables</span>
+                  <span class="lang-de">Nachhaltige Forste</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                  <span class="lang-fr">Issu de massifs régionaux certifiés. Nous ne sélectionnons que des grumes de
+                    feuillus durs de premier choix.</span>
+                  <span class="lang-de">Aus regionalen, nachhaltig bewirtschafteten Beständen. Nur gesunde Stämme bester
+                    Hartholzgüte.</span>
+                </p>
+              </div>
+              <div class="mt-space-md pt-space-sm text-label-sm font-label-sm text-secondary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">nature</span> PEFC &amp; Sylviculture locale
+              </div>
+            </div>
+            <!-- Étape 2 -->
+            <div
+              class="bg-surface-container-low rounded-xl p-space-lg relative flex flex-col justify-between border border-border-warm/70">
+              <div class="w-full h-1 bg-secondary rounded-full mb-space-md"></div>
+              <div>
+                <span class="font-numeric-step text-numeric-step text-primary">02. <span
+                    class="lang-fr">CALIBRAGE</span><span class="lang-de">SPALTUNG</span></span>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal mt-space-xs">
+                  <span class="lang-fr">Fendu &amp; dépoussiéré</span>
+                  <span class="lang-de">Sauber gespalten</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                  <span class="lang-fr">Sciage net et fendage minutieux. Le bois est criblé pour éliminer éclats et
+                    sciure indésirables.</span>
+                  <span class="lang-de">Präziser Schnitt und gleichmäßige Spaltung. Rinden- und Splitteranteile werden
+                    vor Auslieferung gereinigt.</span>
+                </p>
+              </div>
+              <div class="mt-space-md pt-space-sm text-label-sm font-label-sm text-secondary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">carpenter</span>
+                <span class="lang-fr">Bûches régulières et propres</span>
+                <span class="lang-de">Saubere Scheite</span>
+              </div>
+            </div>
+            <!-- Étape 3 -->
+            <div
+              class="bg-surface-container-low rounded-xl p-space-lg relative flex flex-col justify-between border border-border-warm/70">
+              <div class="w-full h-1 bg-secondary rounded-full mb-space-md"></div>
+              <div>
+                <span class="font-numeric-step text-numeric-step text-primary">03. <span
+                    class="lang-fr">SÉCHAGE</span><span class="lang-de">TROCKNUNG</span></span>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal mt-space-xs">
+                  <span class="lang-fr">Sous abri ventilé</span>
+                  <span class="lang-de">Luft- &amp; Regenschutz</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                  <span class="lang-fr">18 à 24 mois d'affinage naturel sous hangars ouverts surélevés, à l'abri de
+                    l'humidité du sol et des pluies.</span>
+                  <span class="lang-de">18 bis 24 Monate Reifung in luftdurchströmten Hallen auf isoliertem Grund,
+                    geschützt vor Regen.</span>
+                </p>
+              </div>
+              <div class="mt-space-md pt-space-sm text-label-sm font-label-sm text-secondary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">air</span>
+                <span class="lang-fr">Circulation d'air naturelle</span>
+                <span class="lang-de">Natürliche Luftzirkulation</span>
+              </div>
+            </div>
+            <!-- Étape 4 -->
+            <div
+              class="bg-surface-container-low rounded-xl p-space-lg relative flex flex-col justify-between border border-border-warm/70">
+              <div class="w-full h-1 bg-secondary rounded-full mb-space-md"></div>
+              <div>
+                <span class="font-numeric-step text-numeric-step text-primary">04. <span
+                    class="lang-fr">CONTRÔLE</span><span class="lang-de">KONTROLLE</span></span>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal mt-space-xs">
+                  <span class="lang-fr">Taux d'humidité &lt; 20%</span>
+                  <span class="lang-de">Restfeuchte &lt; 20%</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                  <span class="lang-fr">Contrôle par hygromètre à pointes au cœur de la bûche avant expédition pour un
+                    allumage instantané.</span>
+                  <span class="lang-de">Messung der Kernfeuchte jeder Charge vor dem Beladen für garantiert ofenfertige
+                    Spitzenqualität.</span>
+                </p>
+              </div>
+              <div class="mt-space-md pt-space-sm text-label-sm font-label-sm text-secondary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">water_drop</span>
+                <span class="lang-fr">Contrôle hygrométrique certifié</span>
+                <span class="lang-de">Hygrometrisch geprüft</span>
+              </div>
+            </div>
+          </div>
+          <!-- Encadré "Pourquoi le taux d'humidité compte" -->
+          <div
+            class="relative rounded-2xl p-space-xl lg:p-space-2xl overflow-hidden shadow-lg bg-primary text-on-primary">
+            <div class="absolute inset-0 bg-cover bg-center mix-blend-luminosity opacity-20 pointer-events-none"
+              style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1V4WuTL66y7IFX6lK39dejRcv5f2YC6th7JiN3ftzeV1rcvGoGeRMMcBbqfsSc9R5KCYd4krNvqVQIz_TxYWYLNkGhTK0UoRtb4kjdNHbeIoEk2NVFkbTLTu_0jizJLTgefW2R69uV_5MP0SxllaDrurw0FwkNnXxjbYx9uqo-DVLYT7pr4BO5Z0CEaKin1OjCCPNIR222Z_0PzW0_MbwpBoEcmLLs_L9rudEfhF_tL0axtWxjK5uRwi-c');">
+            </div>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-forest-dark/95 via-primary/90 to-forest-dark/85 pointer-events-none">
+            </div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+              <div class="lg:col-span-5">
+                <span class="font-eyebrow text-eyebrow uppercase text-primary-fixed tracking-widest">
+                  <span class="lang-fr">Le facteur clé</span>
+                  <span class="lang-de">Der entscheidende Faktor</span>
+                </span>
+                <h3 class="font-headline-lg text-headline-lg mt-space-xs leading-tight text-white">
+                  <span class="lang-fr">Pourquoi le taux d'humidité compte autant ?</span>
+                  <span class="lang-de">Warum die Restfeuchte so entscheidend ist</span>
+                </h3>
+                <p class="font-body-md text-body-md text-primary-fixed-dim mt-space-sm leading-relaxed">
+                  <span class="lang-fr">Brûler un bois humide (&gt; 25%) gaspille plus de la moitié de son énergie à
+                    simplement évaporer l'eau, tout en encrassant sévèrement votre installation.</span>
+                  <span class="lang-de">Feuchtes Holz (&gt; 25% Restfeuchte) verschwendet über die Hälfte seiner Energie
+                    für die Verdunstung von Wasser und verrußt Rauchabzüge und Scheiben.</span>
+                </p>
+              </div>
+              <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                <div class="bg-forest-dark/75 backdrop-blur-xs rounded-xl p-space-md border border-white/15 shadow-sm">
+                  <div class="flex items-center gap-space-xs text-primary-fixed font-headline-sm text-headline-sm mb-1">
+                    <span class="material-symbols-outlined text-[22px]">energy_savings_leaf</span>
+                    <span><span class="lang-fr">Rendement x2</span><span class="lang-de">Doppelter
+                        Heizwert</span></span>
+                  </div>
+                  <p class="font-body-sm text-body-sm text-on-primary/85 leading-relaxed">
+                    <span class="lang-fr">Pouvoir calorifique doublé par rapport à un bois vert, nécessitant beaucoup
+                      moins de bûches par saison.</span>
+                    <span class="lang-de">Deutlich höherer thermischer Wirkungsgrad als bei frischem Holz – Sie
+                      verbrauchen spürbar weniger Holz.</span>
+                  </p>
+                </div>
+                <div class="bg-forest-dark/75 backdrop-blur-xs rounded-xl p-space-md border border-white/15 shadow-sm">
+                  <div class="flex items-center gap-space-xs text-primary-fixed font-headline-sm text-headline-sm mb-1">
+                    <span class="material-symbols-outlined text-[22px]">clear_all</span>
+                    <span><span class="lang-fr">Zéro encrassement</span><span class="lang-de">Kein
+                        Glanzruß</span></span>
+                  </div>
+                  <p class="font-body-sm text-body-sm text-on-primary/85 leading-relaxed">
+                    <span class="lang-fr">Très faible émission de suie et de bistre : conduit préservé, risques réduits
+                      et ramonage simplifié.</span>
+                    <span class="lang-de">Minimale Ruß- und Teerablagerungen: Schont Kaminrohre, verringert Gefahren und
+                      spart Schornsteinfegerkosten.</span>
+                  </p>
+                </div>
+                <div class="bg-forest-dark/75 backdrop-blur-xs rounded-xl p-space-md border border-white/15 shadow-sm">
+                  <div class="flex items-center gap-space-xs text-primary-fixed font-headline-sm text-headline-sm mb-1">
+                    <span class="material-symbols-outlined text-[22px]">blur_off</span>
+                    <span><span class="lang-fr">Moins de fumée</span><span class="lang-de">Rauchfreie
+                        Zündung</span></span>
+                  </div>
+                  <p class="font-body-sm text-body-sm text-on-primary/85 leading-relaxed">
+                    <span class="lang-fr">Allumage propre et rapide sans dégagement d'odeurs piquantes, respectueux du
+                      voisinage.</span>
+                    <span class="lang-de">Schnelles und sauberes Anbrennen ohne beißenden Qualm – umwelt- und
+                      nachbarschaftsfreundlich.</span>
+                  </p>
+                </div>
+                <div class="bg-forest-dark/75 backdrop-blur-xs rounded-xl p-space-md border border-white/15 shadow-sm">
+                  <div class="flex items-center gap-space-xs text-primary-fixed font-headline-sm text-headline-sm mb-1">
+                    <span class="material-symbols-outlined text-[22px]">pan_tool</span>
+                    <span><span class="lang-fr">Vitres transparentes</span><span class="lang-de">Saubere
+                        Scheiben</span></span>
+                  </div>
+                  <p class="font-body-sm text-body-sm text-on-primary/85 leading-relaxed">
+                    <span class="lang-fr">Finies les vitres de poêles noircies après deux heures : le plaisir du feu
+                      sans le nettoyage quotidien.</span>
+                    <span class="lang-de">Schluss mit verrußten Kaminscheiben nach wenigen Stunden: Klarer Blick auf das
+                      Flammenspiel.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 5. LIVRAISON & ZONE D'INTERVENTION -->
+      <section class="w-full bg-surface-container-low py-space-3xl" id="livraison">
+        <div class="max-w-[1200px] mx-auto px-gutter">
+          <div class="max-w-2xl mb-space-2xl">
+            <span class="font-eyebrow text-eyebrow uppercase text-secondary tracking-widest">
+              <span class="lang-fr">Logistique Soignée</span>
+              <span class="lang-de">Zuverlässige Logistik</span>
+            </span>
+            <h2 class="font-headline-lg text-headline-lg text-charcoal tracking-tight mt-space-xs">
+              <span class="lang-fr">Votre bois livré simplement et proprement</span>
+              <span class="lang-de">Ihr Holz zuverlässig und sauber geliefert</span>
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+              <span class="lang-fr">Nous mettons un point d'honneur à ce que la livraison soit aussi confortable et
+                prévisible que la chaleur de votre foyer.</span>
+              <span class="lang-de">Von der Terminabsprache bis zum Entladen an Ihrem Lagerplatz: pünktlich,
+                bodenschonend und transparent.</span>
+            </p>
+          </div>
+          <!-- 4 étapes de commande sans stress -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-space-lg mb-space-2xl">
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between border border-border-warm">
+              <span class="font-display-hero text-headline-lg text-secondary/30">01</span>
+              <div>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal">
+                  <span class="lang-fr">Premier contact</span>
+                  <span class="lang-de">Kontakt</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                  <span class="lang-fr">Remplissez le formulaire en ligne ou appelez notre équipe directement pour
+                    exposer votre besoin.</span>
+                  <span class="lang-de">Nutzen Sie das Online-Formular oder rufen Sie uns direkt an, um Ihren Bedarf
+                    mitzuteilen.</span>
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between border border-border-warm">
+              <span class="font-display-hero text-headline-lg text-secondary/30">02</span>
+              <div>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal">
+                  <span class="lang-fr">Échange personnalisé</span>
+                  <span class="lang-de">Fachberatung</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                  <span class="lang-fr">Nous validons l'essence conseillée, la dimension exacte, le cubage estimé et les
+                    accès de votre terrain.</span>
+                  <span class="lang-de">Wir stimmen Holzart, Scheitlänge, Raummeter und Zufahrtsmöglichkeiten genau mit
+                    Ihnen ab.</span>
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between border border-border-warm">
+              <span class="font-display-hero text-headline-lg text-secondary/30">03</span>
+              <div>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal">
+                  <span class="lang-fr">Devis transparent</span>
+                  <span class="lang-de">Transparentes Angebot</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                  <span class="lang-fr">Vous recevez un récapitulatif détaillé sous 24h avec date prévisionnelle sans
+                    frais cachés.</span>
+                  <span class="lang-de">Sie erhalten innerhalb von 24h ein unverbindliches Angebot mit festem
+                    Lieferzeitfenster.</span>
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between border border-border-warm">
+              <span class="font-display-hero text-headline-lg text-secondary/30">04</span>
+              <div>
+                <h4 class="font-headline-sm text-headline-sm text-charcoal">
+                  <span class="lang-fr">Livraison propre</span>
+                  <span class="lang-de">Saubere Lieferung</span>
+                </h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                  <span class="lang-fr">Créneau horaire confirmé. Déchargement ciblé avec camion benne maniable ou
+                    transpalette adapté.</span>
+                  <span class="lang-de">Pünktliche Anlieferung per wendigem Kipper oder Hubwagen genau an die gewünschte
+                    Stelle.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Information géographique et matériel -->
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg bg-surface rounded-xl p-space-xl shadow-sm border border-border-warm">
+            <div class="lg:col-span-6 flex flex-col justify-between">
+              <div>
+                <div
+                  class="inline-flex items-center gap-space-xs text-primary font-label-sm text-label-sm uppercase tracking-wider mb-space-xs">
+                  <span class="material-symbols-outlined text-[18px]">location_on</span>
+                  <span class="lang-fr">Secteur d'activité</span>
+                  <span class="lang-de">Liefergebiet</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-charcoal">
+                  <span class="lang-fr">Zone de livraison locale &amp; proximité garantie</span>
+                  <span class="lang-de">Regionale Nähe &amp; kurze Transportwege</span>
+                </h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+                  <span class="lang-fr">Nous couvrons l'ensemble de la métropole, les coteaux et les communes
+                    limitrophes dans un rayon de 40 km autour de notre parc de séchage. Cette proximité nous permet de
+                    maintenir des délais courts et un impact carbone maîtrisé.</span>
+                  <span class="lang-de">Wir beliefern das gesamte Ballungsgebiet und die umliegenden Regionen im Umkreis
+                    von ca. 40 km unseres Holzlagerplatzes. Kurze Wege schonen die Umwelt und garantieren schnelle
+                    Termine.</span>
+                </p>
+                <div class="grid grid-cols-2 gap-space-sm mt-space-md font-body-sm text-body-sm text-charcoal">
+                  <div class="flex items-center gap-space-xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    <span><span class="lang-fr">Centre &amp; Première couronne</span><span class="lang-de">Stadtzentrum
+                        &amp; Vororte</span></span>
+                  </div>
+                  <div class="flex items-center gap-space-xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    <span><span class="lang-fr">Ouest &amp; Monts environnants</span><span class="lang-de">Hügelland
+                        &amp; Westregion</span></span>
+                  </div>
+                  <div class="flex items-center gap-space-xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    <span><span class="lang-fr">Plaine &amp; Nord agglomération</span><span class="lang-de">Nördliche
+                        Bezirke</span></span>
+                  </div>
+                  <div class="flex items-center gap-space-xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    <span><span class="lang-fr">Secteurs ruraux périphériques</span><span class="lang-de">Ländlicher
+                        Außenbereich</span></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-space-lg pt-space-md bg-surface-container-low p-space-md rounded-lg flex items-center gap-space-md">
+                <span class="material-symbols-outlined text-[28px] text-primary shrink-0">rv_hookup</span>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  <strong><span class="lang-fr">Accès difficile ?</span><span class="lang-de">Enge
+                      Zufahrten?</span></strong>
+                  <span class="lang-fr"> Nos véhicules benne légers accèdent facilement aux cours étroites, allées
+                    gravillonnées et portails résidentiels sans dégrader votre terrain.</span>
+                  <span class="lang-de"> Unsere kompakten Lieferfahrzeuge meistern auch schmale Hofeinfahrten und
+                    Kieswege schonend und präzise.</span>
+                </p>
+              </div>
+            </div>
+            <div class="lg:col-span-6 min-h-[300px] rounded-xl overflow-hidden shadow-sm">
+              <div class="w-full h-full min-h-[300px] bg-cover bg-center"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDy8apskf7iuL8Oh14M-2-kut8ITaRPX-X5-0yE7wZUbE_QlvP-2q50_mwnMoskDzEMQLiGDgbd8qHt-ej-sSwCw1uiBu9GTUXwFQh_GYMcXWyTF_MgWEX9g0Hn7yZ7vv2Lc9GqSByB0En9bs0RluDxxYNoSi3hmbSCjm1bsmeY_0ctXVV3HDsUBWKWekPLgVrQjomFb6kGH3Gsdv880EV_EGR6Z_8GAluSoFNZk4EAWQWZCtHdjdlfpQ')">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 6. AVIS CLIENTS / KUNDENSTIMMEN -->
+      <section class="w-full bg-surface-white py-space-3xl" id="avis-clients">
+        <div class="max-w-[1200px] mx-auto px-gutter">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-2xl">
+            <div class="max-w-2xl">
+              <span class="font-eyebrow text-eyebrow uppercase text-secondary tracking-widest">
+                <span class="lang-fr">Confiance &amp; Retours d'expérience</span>
+                <span class="lang-de">Vertrauen &amp; Kundenstimmen</span>
+              </span>
+              <h2 class="font-headline-lg text-headline-lg text-charcoal tracking-tight mt-space-xs">
+                <span class="lang-fr">Ce que nos clients disent de notre bois et de notre service</span>
+                <span class="lang-de">Was unsere Kunden über unser Holz und den Service sagen</span>
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-space-sm leading-relaxed">
+                <span class="lang-fr">Retours authentiques de particuliers et propriétaires de cheminées et poêles. Une
+                  fidélité forgée sur la régularité du séchage et le respect des engagements.</span>
+                <span class="lang-de">Echte Rückmeldungen von Hausbesitzern und Ofenliebhabern. Unsere Kundentreue
+                  basiert auf verlässlicher Restfeuchte und vorbildlichem Lieferservice.</span>
+              </p>
+            </div>
+            <div
+              class="shrink-0 inline-flex items-center gap-space-sm bg-surface-container-low px-space-lg py-space-sm rounded-xl shadow-sm border border-border-warm">
+              <div class="flex items-center text-secondary">
+                <span class="material-symbols-outlined text-[20px]"
+                  style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[20px]"
+                  style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[20px]"
+                  style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[20px]"
+                  style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[20px]"
+                  style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <div class="flex flex-col text-left">
+                <span class="font-headline-sm text-headline-sm text-charcoal leading-none">4.9 / 5</span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">
+                  <span class="lang-fr">98% de fidélité · +180 livraisons</span>
+                  <span class="lang-de">98% Stammkunden · +180 Lieferungen</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- Grille des 3 avis -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+            <!-- Avis 1 -->
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm">
+              <div>
+                <div class="flex items-center justify-between mb-space-md">
+                  <div class="flex items-center text-secondary gap-0.5">
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <span
+                    class="font-label-sm text-label-sm text-primary bg-forest-tint px-2.5 py-0.5 rounded-full font-semibold">
+                    <span class="lang-fr">Contrôlé &lt; 20%</span>
+                    <span class="lang-de">Geprüft &lt; 20%</span>
+                  </span>
+                </div>
+                <p class="font-body-md text-body-md text-charcoal leading-relaxed mb-space-md italic">
+                  <span class="lang-fr">« Après des déconvenues avec d'autres fournisseurs où le bois fumait sans
+                    chauffer, j'ai testé Atelier Forestier. Le bois est réellement sec à cœur, l'allumage est instantané
+                    et ma vitre reste propre des semaines. Un vrai confort tout l'hiver. »</span>
+                  <span class="lang-de">« Nach vielen Enttäuschungen mit feuchtem Holz von anderen Händlern bin ich auf
+                    Atelier Forestier gestoßen. Das Holz ist wirklich kerngetrocknet, brennt sofort an und die Scheibe
+                    bleibt sauber. Höchster Heizkomfort! »</span>
+                </p>
+              </div>
+              <div class="pt-space-md bg-surface-container-low/70 rounded-lg p-space-sm flex items-center gap-space-sm">
+                <div
+                  class="w-10 h-10 rounded-full bg-forest-tint text-primary font-headline-sm flex items-center justify-center shrink-0 font-bold">
+                  MD
+                </div>
+                <div>
+                  <p class="font-label-md text-label-md text-charcoal">Marc D. <span
+                      class="text-on-surface-variant font-body-sm font-normal">· Écully</span></p>
+                  <p class="font-body-sm text-body-sm text-secondary">
+                    <span class="lang-fr">Poêle à bois scandinave (33 cm)</span>
+                    <span class="lang-de">Skandinavischer Kaminofen (33 cm)</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Avis 2 -->
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm">
+              <div>
+                <div class="flex items-center justify-between mb-space-md">
+                  <div class="flex items-center text-secondary gap-0.5">
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <span
+                    class="font-label-sm text-label-sm text-secondary bg-wood-tint/70 px-2.5 py-0.5 rounded-full font-semibold">
+                    <span class="lang-fr">Livraison soignée</span>
+                    <span class="lang-de">Pünktliche Anlieferung</span>
+                  </span>
+                </div>
+                <p class="font-body-md text-body-md text-charcoal leading-relaxed mb-space-md italic">
+                  <span class="lang-fr">« Ponctualité exemplaire et chauffeur remarquable. Notre allée en pavés est
+                    délicate : il a manœuvré au centimètre sans laisser la moindre trace et le déchargement a été fait
+                    exactement devant notre abri. Le volume livré est parfaitement conforme. »</span>
+                  <span class="lang-de">« Vorbildliche Pünktlichkeit und ein äußerst geschickter Fahrer. Auf unserer
+                    gepflasterten Auffahrt wurde millimetergenau rangiert, ohne Spuren zu hinterlassen. Die gelieferte
+                    Holzmenge war absolut exakt. »</span>
+                </p>
+              </div>
+              <div class="pt-space-md bg-surface-container-low/70 rounded-lg p-space-sm flex items-center gap-space-sm">
+                <div
+                  class="w-10 h-10 rounded-full bg-wood-tint/70 text-secondary font-headline-sm flex items-center justify-center shrink-0 font-bold">
+                  SV
+                </div>
+                <div>
+                  <p class="font-label-md text-label-md text-charcoal">Sylvie &amp; François V. <span
+                      class="text-on-surface-variant font-body-sm font-normal">· Saint-Cyr</span></p>
+                  <p class="font-body-sm text-body-sm text-secondary">
+                    <span class="lang-fr">Insert contemporain (5 stères Chêne/Hêtre)</span>
+                    <span class="lang-de">Moderner Kamineinsatz (5 RM Buche/Eiche)</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Avis 3 -->
+            <div
+              class="bg-surface rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm">
+              <div>
+                <div class="flex items-center justify-between mb-space-md">
+                  <div class="flex items-center text-secondary gap-0.5">
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-[18px]"
+                      style="font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <span
+                    class="font-label-sm text-label-sm text-primary bg-forest-tint px-2.5 py-0.5 rounded-full font-semibold">
+                    <span class="lang-fr">Conseil d'expert</span>
+                    <span class="lang-de">Fachmännische Beratung</span>
+                  </span>
+                </div>
+                <p class="font-body-md text-body-md text-charcoal leading-relaxed mb-space-md italic">
+                  <span class="lang-fr">« Excellent conseil au téléphone pour panacher Chêne et Charme pour notre grand
+                    foyer fermé. Les bûches en 40 cm sont fendues avec une grande régularité, presque pas d'écorce
+                    perdue. Une chaleur douce et durable. »</span>
+                  <span class="lang-de">« Hervorragende telefonische Beratung über die ideale Mischung aus Eiche und
+                    Hainbuche für unseren Kachelofen. Die 40-cm-Scheite sind exakt gespalten, kaum Rindenabrieb und
+                    wunderbar gleichmäßige Glut. »</span>
+                </p>
+              </div>
+              <div class="pt-space-md bg-surface-container-low/70 rounded-lg p-space-sm flex items-center gap-space-sm">
+                <div
+                  class="w-10 h-10 rounded-full bg-forest-tint text-primary font-headline-sm flex items-center justify-center shrink-0 font-bold">
+                  AB
+                </div>
+                <div>
+                  <p class="font-label-md text-label-md text-charcoal">Antoine B. <span
+                      class="text-on-surface-variant font-body-sm font-normal">· Limonest</span></p>
+                  <p class="font-body-sm text-body-sm text-secondary">
+                    <span class="lang-fr">Foyer fermé (bûches 40 cm)</span>
+                    <span class="lang-de">Kachelofen (40 cm Scheite)</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 7. FORMULAIRE DE DEMANDE DE DEVIS EN LIGNE -->
+      <section class="w-full bg-surface-white py-space-3xl scroll-mt-24" id="devis">
+        <div class="max-w-[1000px] mx-auto px-gutter">
+          <div class="bg-surface rounded-2xl p-space-xl lg:p-space-2xl shadow-md border border-border-warm">
+            <div class="text-center max-w-xl mx-auto mb-space-2xl">
+              <span class="font-eyebrow text-eyebrow uppercase text-secondary tracking-widest">
+                <span class="lang-fr">Tarification Personnalisée</span>
+                <span class="lang-de">Individuelles Festpreisangebot</span>
+              </span>
+              <h2 class="font-headline-lg text-headline-lg text-charcoal tracking-tight mt-space-xs">
+                <span class="lang-fr">Besoin de bois pour la saison ? Demandez votre devis gratuit</span>
+                <span class="lang-de">Brennholz für die Saison? Jetzt unverbindliches Angebot anfordern</span>
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+                <span class="lang-fr">Remplissez simplement vos critères ci-dessous. Nous vous répondons sous 24h avec
+                  nos disponibilités et un tarif personnalisé sans engagement.</span>
+                <span class="lang-de">Tragen Sie Ihre Wünsche ein. Wir melden uns innerhalb von 24 Stunden mit
+                  Verfügbarkeit und fairen Lieferkonditionen.</span>
+              </p>
+            </div>
+            <form class="space-y-space-lg"
+              onsubmit="event.preventDefault(); document.getElementById('devis-success').classList.remove('hidden'); this.reset();">
+              <!-- Coordonnées personnelles -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+                <div>
+                  <label class="block font-label-md text-label-md text-charcoal mb-1" for="nom">
+                    <span class="lang-fr">Nom complet <span class="text-secondary">*</span></span>
+                    <span class="lang-de">Vollständiger Name <span class="text-secondary">*</span></span>
+                  </label>
+                  <input
+                    class="w-full h-[52px] px-space-md bg-surface-white rounded-lg text-charcoal font-body-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-border-warm"
+                    id="nom" placeholder="Ex: Marc Dubois / Michael Weber" required="" type="text" />
+                </div>
+                <div>
+                  <label class="block font-label-md text-label-md text-charcoal mb-1" for="telephone">
+                    <span class="lang-fr">Numéro de téléphone <span class="text-secondary">*</span></span>
+                    <span class="lang-de">Telefonnummer <span class="text-secondary">*</span></span>
+                  </label>
+                  <input
+                    class="w-full h-[52px] px-space-md bg-surface-white rounded-lg text-charcoal font-body-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-border-warm"
+                    id="telephone" placeholder="Ex: 06 12 34 56 78 / +49..." required="" type="tel" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+                <div>
+                  <label class="block font-label-md text-label-md text-charcoal mb-1" for="email">
+                    <span class="lang-fr">Adresse e-mail <span class="text-secondary">*</span></span>
+                    <span class="lang-de">E-Mail-Adresse <span class="text-secondary">*</span></span>
+                  </label>
+                  <input
+                    class="w-full h-[52px] px-space-md bg-surface-white rounded-lg text-charcoal font-body-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-border-warm"
+                    id="email" placeholder="contact@exemple.fr" required="" type="email" />
+                </div>
+                <div>
+                  <label class="block font-label-md text-label-md text-charcoal mb-1" for="ville">
+                    <span class="lang-fr">Ville &amp; Code Postal (livraison) <span
+                        class="text-secondary">*</span></span>
+                    <span class="lang-de">PLZ &amp; Lieferort <span class="text-secondary">*</span></span>
+                  </label>
+                  <input
+                    class="w-full h-[52px] px-space-md bg-surface-white rounded-lg text-charcoal font-body-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-border-warm"
+                    id="ville" placeholder="Ex: 69000 Lyon / Postleitzahl" required="" type="text" />
+                </div>
+              </div>
+              <!-- Type de bois souhaité -->
+              <div>
+                <label class="block font-label-md text-label-md text-charcoal mb-1" for="essence">
+                  <span class="lang-fr">Essence ou formule souhaitée <span class="text-secondary">*</span></span>
+                  <span class="lang-de">Gewünschte Holzart / Mischung <span class="text-secondary">*</span></span>
+                </label>
+                <select
+                  class="w-full h-[52px] px-space-md bg-surface-white rounded-lg text-charcoal font-body-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-border-warm"
+                  id="essence" required="">
+                  <option class="lang-fr" value="">Sélectionnez une formule...</option>
+                  <option class="lang-de" value="">Bitte auswählen...</option>
+                  <option value="melange">Mélange Feuillus Durs / Hartholz-Mix (Chêne &amp; Hêtre / Eiche &amp; Buche)
+                  </option>
+                  <option value="chene">Chêne pur / Reine Eiche (Glut &amp; Nachtbetrieb)</option>
+                  <option value="hetre">Hêtre pur / Reine Buche (Klares Feuer &amp; Scheiben)</option>
+                  <option value="charme">Charme / Hainbuche (Höchster Brennwert)</option>
+                  <option value="conseil">Conseil personnalisé / Noch unentschlossen</option>
+                </select>
+              </div>
+              <!-- Longueur des bûches -->
+              <div>
+                <label class="block font-label-md text-label-md text-charcoal mb-space-xs">
+                  <span class="lang-fr">Longueur des bûches souhaitée <span class="text-secondary">*</span></span>
+                  <span class="lang-de">Gewünschte Scheitlänge <span class="text-secondary">*</span></span>
+                </label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm" id="length-selector">
+                  <label
+                    class="relative flex flex-col items-center justify-center p-space-md bg-surface-white rounded-lg cursor-pointer hover:bg-forest-tint transition-all shadow-sm border border-border-warm">
+                    <input class="sr-only peer" name="longueur" type="radio" value="25cm" />
+                    <span class="font-headline-sm text-headline-sm text-charcoal peer-checked:text-primary">25 cm</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">
+                      <span class="lang-fr">Petit poêle</span>
+                      <span class="lang-de">Kompaktofen</span>
+                    </span>
+                    <div class="absolute top-2 right-2 w-4 h-4 rounded-full bg-primary hidden peer-checked:block"></div>
+                  </label>
+                  <label
+                    class="relative flex flex-col items-center justify-center p-space-md bg-surface-white rounded-lg cursor-pointer hover:bg-forest-tint transition-all shadow-sm border border-border-warm">
+                    <input checked="" class="sr-only peer" name="longueur" type="radio" value="33cm" />
+                    <span class="font-headline-sm text-headline-sm text-charcoal peer-checked:text-primary">33 cm</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">Standard</span>
+                    <div class="absolute top-2 right-2 w-4 h-4 rounded-full bg-primary hidden peer-checked:block"></div>
+                  </label>
+                  <label
+                    class="relative flex flex-col items-center justify-center p-space-md bg-surface-white rounded-lg cursor-pointer hover:bg-forest-tint transition-all shadow-sm border border-border-warm">
+                    <input class="sr-only peer" name="longueur" type="radio" value="40cm" />
+                    <span class="font-headline-sm text-headline-sm text-charcoal peer-checked:text-primary">40 cm</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">
+                      <span class="lang-fr">Intermédiaire</span>
+                      <span class="lang-de">Mittlerer Kamin</span>
+                    </span>
+                    <div class="absolute top-2 right-2 w-4 h-4 rounded-full bg-primary hidden peer-checked:block"></div>
+                  </label>
+                  <label
+                    class="relative flex flex-col items-center justify-center p-space-md bg-surface-white rounded-lg cursor-pointer hover:bg-forest-tint transition-all shadow-sm border border-border-warm">
+                    <input class="sr-only peer" name="longueur" type="radio" value="50cm" />
+                    <span class="font-headline-sm text-headline-sm text-charcoal peer-checked:text-primary">50 cm</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">
+                      <span class="lang-fr">Grand foyer</span>
+                      <span class="lang-de">Großer Kamin</span>
+                    </span>
+                    <div class="absolute top-2 right-2 w-4 h-4 rounded-full bg-primary hidden peer-checked:block"></div>
+                  </label>
+                </div>
+              </div>
+              <!-- Volume estimé -->
+              <div>
+                <label class="block font-label-md text-label-md text-charcoal mb-space-xs">
+                  <span class="lang-fr">Volume estimé (en stères / Raummeter) <span
+                      class="text-secondary">*</span></span>
+                  <span class="lang-de">Geschätzte Menge (Raummeter / RM) <span class="text-secondary">*</span></span>
+                </label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+                  <label
+                    class="flex items-center gap-space-xs p-space-sm bg-surface-white rounded-lg cursor-pointer shadow-sm border border-border-warm">
+                    <input checked="" class="text-primary focus:ring-primary" name="volume" type="radio" value="3-5" />
+                    <span class="font-body-sm text-body-sm text-charcoal">3 - 5 RM / Stères</span>
+                  </label>
+                  <label
+                    class="flex items-center gap-space-xs p-space-sm bg-surface-white rounded-lg cursor-pointer shadow-sm border border-border-warm">
+                    <input class="text-primary focus:ring-primary" name="volume" type="radio" value="6-10" />
+                    <span class="font-body-sm text-body-sm text-charcoal">6 - 10 RM / Stères</span>
+                  </label>
+                  <label
+                    class="flex items-center gap-space-xs p-space-sm bg-surface-white rounded-lg cursor-pointer shadow-sm border border-border-warm">
+                    <input class="text-primary focus:ring-primary" name="volume" type="radio" value="10plus" />
+                    <span class="font-body-sm text-body-sm text-charcoal">&gt; 10 RM / Stères</span>
+                  </label>
+                  <label
+                    class="flex items-center gap-space-xs p-space-sm bg-surface-white rounded-lg cursor-pointer shadow-sm border border-border-warm">
+                    <input class="text-primary focus:ring-primary" name="volume" type="radio" value="unsure" />
+                    <span class="font-body-sm text-body-sm text-charcoal">
+                      <span class="lang-fr">À déterminer</span>
+                      <span class="lang-de">Noch unklar</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <!-- Message optionnel -->
+              <div>
+                <label class="block font-label-md text-label-md text-charcoal mb-1" for="remarques">
+                  <span class="lang-fr">Précisions complémentaires (accès cour, portail, créneau souhaité)</span>
+                  <span class="lang-de">Zusätzliche Angaben (Zufahrt, Hof, Terminwunsch)</span>
+                </label>
+                <textarea
+                  class="w-full p-space-md bg-surface-white rounded-lg text-charcoal font-body-md focus:outline-none focus:ring-2 focus:ring-primary resize-y shadow-sm border border-border-warm"
+                  id="remarques" placeholder="Accès cour, créneau souhaité..." rows="3"></textarea>
+              </div>
+              <!-- Soumission & Réassurance -->
+              <div class="pt-space-sm text-center">
+                <button
+                  class="w-full md:w-auto inline-flex items-center justify-center bg-primary-container hover:bg-forest-dark text-on-primary font-label-lg text-label-lg px-space-2xl py-4 rounded-lg shadow-sm transition-all duration-200 hover:-translate-y-0.5"
+                  type="submit">
+                  <span class="lang-fr">Demander mon devis personnalisé</span>
+                  <span class="lang-de">Kostenloses Angebot absenden</span>
+                </button>
+                <div
+                  class="flex items-center justify-center gap-space-xs mt-space-sm text-on-surface-variant font-body-sm text-body-sm">
+                  <span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+                  <span>
+                    <span class="lang-fr">Réponse sous 24 à 48h. Vos données restent strictement confidentielles et sans
+                      engagement.</span>
+                    <span class="lang-de">Rückmeldung innerhalb von 24h. Ihre Angaben werden vertraulich behandelt &amp;
+                      unverbindlich.</span>
+                  </span>
+                </div>
+              </div>
+            </form>
+            <!-- Message de succès après soumission -->
+            <div class="hidden mt-space-lg p-space-lg bg-forest-tint rounded-xl text-primary text-center"
+              id="devis-success">
+              <span class="material-symbols-outlined text-[32px] text-primary"
+                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              <h4 class="font-headline-sm text-headline-sm mt-space-xs">
+                <span class="lang-fr">Votre demande a bien été transmise !</span>
+                <span class="lang-de">Ihre Anfrage wurde erfolgreich übermittelt!</span>
+              </h4>
+              <p class="font-body-md text-body-md mt-1">
+                <span class="lang-fr">Notre équipe vous recontactera rapidement avec une estimation détaillée et les
+                  prochaines disponibilités.</span>
+                <span class="lang-de">Unser Team meldet sich umgehend mit einem detaillierten Angebot und den nächsten
+                  Lieferterminen bei Ihnen.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 8. FOIRE AUX QUESTIONS (FAQ) -->
+      <section class="w-full bg-surface-container-low py-space-3xl" id="faq">
+        <div class="max-w-[900px] mx-auto px-gutter">
+          <div class="text-center max-w-xl mx-auto mb-space-2xl">
+            <span class="font-eyebrow text-eyebrow uppercase text-secondary tracking-widest">
+              <span class="lang-fr">Informations Pratiques</span>
+              <span class="lang-de">Praktische Fragen</span>
+            </span>
+            <h2 class="font-headline-lg text-headline-lg text-charcoal tracking-tight mt-space-xs">
+              <span class="lang-fr">Questions Fréquentes</span>
+              <span class="lang-de">Häufig gestellte Fragen</span>
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+              <span class="lang-fr">Tout ce que vous devez savoir pour aborder votre saison de chauffe en toute
+                sérénité.</span>
+              <span class="lang-de">Alles Wissenswerte für eine sorgenfreie und behagliche Heizsaison.</span>
+            </p>
+          </div>
+          <div class="space-y-space-md" id="faq-accordion">
+            <!-- Q1 -->
+            <div class="bg-surface rounded-xl p-space-lg shadow-sm transition-all border border-border-warm">
+              <button class="w-full flex items-center justify-between text-left focus:outline-none"
+                onclick="this.parentElement.querySelector('.faq-content').classList.toggle('hidden'); this.querySelector('.faq-icon').classList.toggle('rotate-180');"
+                type="button">
+                <h4 class="font-headline-sm text-headline-sm text-charcoal pr-space-md">
+                  <span class="lang-fr">Le bois est-il prêt à brûler immédiatement à la livraison ?</span>
+                  <span class="lang-de">Ist das Holz sofort nach der Lieferung ofenfertig brennbar?</span>
+                </h4>
+                <span
+                  class="material-symbols-outlined text-primary faq-icon transition-transform duration-200 shrink-0">expand_more</span>
+              </button>
+              <div
+                class="faq-content mt-space-md pt-space-sm text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                <span class="lang-fr">Oui, absolument. L'ensemble de notre assortiment de feuillus durs est séché
+                  naturellement sous abri ventilé pendant 18 à 24 mois. Nous testons l'hygrométrie à cœur par sondage
+                  avant tout départ en camion afin d'assurer un taux inférieur à 20%. Vous pouvez l'enfourner dès le
+                  jour de livraison.</span>
+                <span class="lang-de">Ja, absolut. Unser gesamtes Hartholzsortiment lagert 18 bis 24 Monate unter
+                  belüfteten Dächern. Vor Auslieferung prüfen wir stichprobenartig die Restfeuchte im Kern (&lt; 20%).
+                  Sie können das Holz sofort verfeuern.</span>
+              </div>
+            </div>
+            <!-- Q2 -->
+            <div class="bg-surface rounded-xl p-space-lg shadow-sm transition-all border border-border-warm">
+              <button class="w-full flex items-center justify-between text-left focus:outline-none"
+                onclick="this.parentElement.querySelector('.faq-content').classList.toggle('hidden'); this.querySelector('.faq-icon').classList.toggle('rotate-180');"
+                type="button">
+                <h4 class="font-headline-sm text-headline-sm text-charcoal pr-space-md">
+                  <span class="lang-fr">Quelles sont les longueurs de bûches disponibles ?</span>
+                  <span class="lang-de">Welche Scheitlängen sind verfügbar?</span>
+                </h4>
+                <span
+                  class="material-symbols-outlined text-primary faq-icon transition-transform duration-200 shrink-0">expand_more</span>
+              </button>
+              <div
+                class="faq-content hidden mt-space-md pt-space-sm text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                <span class="lang-fr">Nous calibrons nos bûches en quatre formats rigoureux : 25 cm, 33 cm, 40 cm et 50
+                  cm. Chaque coupe est nette et calibrée pour éviter les morceaux disproportionnés qui bloquent les
+                  portes de foyers étanches.</span>
+                <span class="lang-de">Wir schneiden unser Holz in vier präzise Längen: 25 cm, 33 cm, 40 cm und 50 cm.
+                  Präziser Schnitt ohne Überlängen für reibungsloses Nachlegen.</span>
+              </div>
+            </div>
+            <!-- Q3 -->
+            <div class="bg-surface rounded-xl p-space-lg shadow-sm transition-all border border-border-warm">
+              <button class="w-full flex items-center justify-between text-left focus:outline-none"
+                onclick="this.parentElement.querySelector('.faq-content').classList.toggle('hidden'); this.querySelector('.faq-icon').classList.toggle('rotate-180');"
+                type="button">
+                <h4 class="font-headline-sm text-headline-sm text-charcoal pr-space-md">
+                  <span class="lang-fr">Comment se déroule la livraison à mon domicile ?</span>
+                  <span class="lang-de">Wie läuft die Anlieferung an meine Adresse ab?</span>
+                </h4>
+                <span
+                  class="material-symbols-outlined text-primary faq-icon transition-transform duration-200 shrink-0">expand_more</span>
+              </button>
+              <div
+                class="faq-content hidden mt-space-md pt-space-sm text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                <span class="lang-fr">Nous convenons d'un créneau précis par téléphone. Notre chauffeur livre à l'aide
+                  d'un camion benne compact maniable ou d'un plateau selon la disposition de votre propriété. Le bois
+                  est déposé au plus près de votre zone de stockage (cour, entrée de garage, allée stabilisée).</span>
+                <span class="lang-de">Wir vereinbaren vorab ein genaues Zeitfenster. Unsere wendigen Fahrzeuge kippen
+                  das Holz bodenschonend so nah wie möglich an Ihrem Holzunterstand oder Ihrer Garage ab.</span>
+              </div>
+            </div>
+            <!-- Q4 -->
+            <div class="bg-surface rounded-xl p-space-lg shadow-sm transition-all border border-border-warm">
+              <button class="w-full flex items-center justify-between text-left focus:outline-none"
+                onclick="this.parentElement.querySelector('.faq-content').classList.toggle('hidden'); this.querySelector('.faq-icon').classList.toggle('rotate-180');"
+                type="button">
+                <h4 class="font-headline-sm text-headline-sm text-charcoal pr-space-md">
+                  <span class="lang-fr">Quel est le volume minimum de commande ?</span>
+                  <span class="lang-de">Gibt es eine Mindestbestellmenge?</span>
+                </h4>
+                <span
+                  class="material-symbols-outlined text-primary faq-icon transition-transform duration-200 shrink-0">expand_more</span>
+              </button>
+              <div
+                class="faq-content hidden mt-space-md pt-space-sm text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                <span class="lang-fr">Pour assurer des tournées logiques et optimiser les coûts de transport, notre
+                  seuil habituel est de 3 stères pour la livraison à domicile. Vous pouvez également venir charger des
+                  volumes moindres directement à notre dépôt sur rendez-vous.</span>
+                <span class="lang-de">Aus logistischen Gründen beträgt die Mindestmenge für Lieferungen 3 Raummeter.
+                  Kleinere Mengen können nach Absprache direkt an unserem Lagerplatz abgeholt werden.</span>
+              </div>
+            </div>
+            <!-- Q5 -->
+            <div class="bg-surface rounded-xl p-space-lg shadow-sm transition-all border border-border-warm">
+              <button class="w-full flex items-center justify-between text-left focus:outline-none"
+                onclick="this.parentElement.querySelector('.faq-content').classList.toggle('hidden'); this.querySelector('.faq-icon').classList.toggle('rotate-180');"
+                type="button">
+                <h4 class="font-headline-sm text-headline-sm text-charcoal pr-space-md">
+                  <span class="lang-fr">Comment obtenir un conseil sur l'essence la plus adaptée à mon appareil ?</span>
+                  <span class="lang-de">Welches Holz passt am besten zu meinem Kamin?</span>
+                </h4>
+                <span
+                  class="material-symbols-outlined text-primary faq-icon transition-transform duration-200 shrink-0">expand_more</span>
+              </button>
+              <div
+                class="faq-content hidden mt-space-md pt-space-sm text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                <span class="lang-fr">Par simple appel ou via notre formulaire de devis. En précisant le type de votre
+                  équipement (insert moderne avec régulation, poêle scandinave, poêle de masse ou foyer ouvert), nous
+                  vous recommandons le dosage idéal entre Chêne, Hêtre et Charme pour une combustion sans
+                  déperdition.</span>
+                <span class="lang-de">Geben Sie im Formular oder telefonisch einfach Ihren Ofentyp an. Buche eignet sich
+                  für helle Flammen und Kaminöfen mit Sichtglas, während Eiche und Hainbuche besonders für Kachelöfen
+                  und lange Heizperioden ideal sind.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 9. CALL-TO-ACTION FINAL WITH WARM FIREPLACE BACKGROUND -->
+      <section class="w-full relative overflow-hidden py-space-3xl text-on-primary bg-cover bg-center"
+        style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1Ut9nSoXRdteW06VQD6OkDsO_je01GqqdJhluMA__zmJ3X4GGuo_amfHm2rV_cYG7DdcZCHVm6MEY7YDC-czRAtUeljcpo33DzGQRDlfsWrffelhmxWmSsOfdbW5-zgVYkhsmCOAM5hRbQbrsJD3rqFXfoLvDNgQnqPEjzdyxKbnk0g8zPb9wgqGCblZNypgqTCL0XWIvuq7wSEKRH2YRpfN4kU1Ry_4b-RBvaFDgyQAheGPuYY2Oiaxww');">
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-[#183228]/95 via-[#23483a]/90 to-[#183228]/92 pointer-events-none">
+        </div>
+        <div class="max-w-[1000px] mx-auto px-gutter relative z-10 text-center">
+          <span class="font-eyebrow text-eyebrow uppercase text-primary-fixed tracking-widest">
+            <span class="lang-fr">Anticipez Votre Hiver</span>
+            <span class="lang-de">Vorsorgen für die kalte Jahreszeit</span>
+          </span>
+          <h2
+            class="font-display-hero text-headline-lg md:text-display-hero mt-space-xs max-w-2xl mx-auto leading-tight text-white drop-shadow-sm">
+            <span class="lang-fr">Prêt à préparer votre confort pour l'hiver ?</span>
+            <span class="lang-de">Bereit für wohlige Wärme im Winter?</span>
+          </h2>
+          <p class="font-body-lg text-body-lg text-primary-fixed-dim max-w-xl mx-auto mt-space-md leading-relaxed">
+            <span class="lang-fr">Contactez notre équipe locale pour échanger sur vos besoins, réserver votre volume ou
+              recevoir votre estimation gratuite sous 24h.</span>
+            <span class="lang-de">Kontaktieren Sie uns jetzt, sichern Sie sich Ihren Holzvorrat und erhalten Sie ein
+              maßgeschneidertes Angebot innerhalb von 24 Stunden.</span>
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-space-md mt-space-xl">
+            <a class="inline-flex items-center justify-center bg-surface text-primary hover:bg-surface-container font-label-lg text-label-lg px-space-xl py-4 rounded-lg shadow-lg transition-all duration-200 hover:-translate-y-0.5"
+              href="#devis">
+              <span class="lang-fr">Demander un devis gratuit</span>
+              <span class="lang-de">Angebot anfordern</span>
+            </a>
+            <a class="inline-flex items-center gap-space-xs bg-forest-dark/80 hover:bg-forest-dark text-on-primary font-label-lg text-label-lg px-space-xl py-4 rounded-lg transition-colors border border-white/20 backdrop-blur-xs"
+              href="tel:0478451234">
+              <span class="material-symbols-outlined text-[20px] text-secondary-fixed">phone</span>
+              <span class="lang-fr">Appeler le 04 78 45 12 34</span>
+              <span class="lang-de">Anrufen: 04 78 45 12 34</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <!-- FOOTER -->
+  <footer class="w-full bg-surface-container-low text-on-surface-variant border-t border-border-warm">
+    <div class="max-w-[1200px] mx-auto px-gutter pt-space-3xl pb-space-2xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl">
+        <div class="lg:col-span-4 flex flex-col gap-space-md">
+          <div class="flex items-center gap-space-sm">
+            <img alt="Atelier Forestier Logo" class="h-8 w-auto object-contain"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1UghFG5w6OVMOiPQd8y3DF7YdcTQ-tvYWgiIkObKmeqv-o5KA1rDQzlaCZ7NTs4tI657KGdB0wv5OmfUnoItfw4RO7e0Yu-EL0KCGIzP4uuSpLGtPqb2sfoDdrnp9Yv2Yzd99v37qNr7g-8aJ1U4zFdMKpGiD4jeMlnbsV3wiKDpRC7Pjd_Whau9MOSX5z-W3cVN-Hexe4L_lyGYzYcQG7o2TX88lCsyakaybN3YerG6Yml1qU4RjVBbUg" />
+            <span class="font-headline-sm text-headline-sm text-forest-dark">Atelier Forestier</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
+            <span class="lang-fr">Exploitation et valorisation raisonnée de feuillus durs locaux. Bois de chauffage
+              fendu, calibré et séché naturellement sous abri pour un rendement calorifique d'excellence.</span>
+            <span class="lang-de">Nachhaltige Forstwirtschaft und Veredelung heimischer Laubhölzer. Ofenfertiges
+              Brennholz, maßgespalten und luftgetrocknet für höchsten Heizwert.</span>
+          </p>
+          <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary">
+            <span class="material-symbols-outlined text-[16px]">verified</span>
+            <span class="lang-fr">Taux d'humidité certifié &lt; 20%</span>
+            <span class="lang-de">Geprüfte Restfeuchte &lt; 20%</span>
+          </div>
+        </div>
+        <div class="lg:col-span-3 flex flex-col gap-space-sm">
+          <span class="font-label-lg text-label-lg text-on-surface tracking-wide uppercase">
+            <span class="lang-fr">Essences &amp; Formats</span>
+            <span class="lang-de">Holzarten &amp; Formate</span>
+          </span>
+          <ul class="flex flex-col gap-space-xs font-body-sm text-body-sm">
+            <li class="flex items-center gap-space-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              <span><span class="lang-fr">Chêne de pays (haute tenue)</span><span class="lang-de">Regionale Eiche (hohe
+                  Glutdauer)</span></span>
+            </li>
+            <li class="flex items-center gap-space-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              <span><span class="lang-fr">Hêtre blanchi (flamme vive)</span><span class="lang-de">Buche (helle
+                  Flamme)</span></span>
+            </li>
+            <li class="flex items-center gap-space-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              <span><span class="lang-fr">Charme dense (braises durables)</span><span class="lang-de">Hainbuche (höchste
+                  Dichte)</span></span>
+            </li>
+            <li class="mt-space-xs text-on-surface-variant/80">25 cm · 33 cm · 40 cm · 50 cm</li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2 flex flex-col gap-space-sm">
+          <span class="font-label-lg text-label-lg text-on-surface tracking-wide uppercase">
+            <span class="lang-fr">Navigation</span>
+            <span class="lang-de">Navigation</span>
+          </span>
+          <nav class="flex flex-col gap-space-xs font-body-sm text-body-sm">
+            <a class="hover:text-on-surface transition-colors" href="#nos-bois">
+              <span class="lang-fr">Nos Bois</span>
+              <span class="lang-de">Unser Holz</span>
+            </a>
+            <a class="hover:text-on-surface transition-colors" href="#dimensions">
+              <span class="lang-fr">Dimensions</span>
+              <span class="lang-de">Formate</span>
+            </a>
+            <a class="hover:text-on-surface transition-colors" href="#qualite-et-sechage">
+              <span class="lang-fr">Qualité &amp; Séchage</span>
+              <span class="lang-de">Qualität &amp; Trocknung</span>
+            </a>
+            <a class="hover:text-on-surface transition-colors" href="#livraison">
+              <span class="lang-fr">Zone de Livraison</span>
+              <span class="lang-de">Liefergebiet</span>
+            </a>
+            <a class="hover:text-on-surface transition-colors" href="#faq">
+              <span class="lang-fr">Questions Fréquentes</span>
+              <span class="lang-de">FAQ</span>
+            </a>
+          </nav>
+        </div>
+        <div class="lg:col-span-3 flex flex-col gap-space-md">
+          <span class="font-label-lg text-label-lg text-on-surface tracking-wide uppercase">
+            <span class="lang-fr">Dépôt &amp; Contact</span>
+            <span class="lang-de">Lagerplatz &amp; Kontakt</span>
+          </span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            <span class="lang-fr">Plateforme logistique &amp; séchage ouverte du lundi au samedi. Livraisons en camion
+              benne ou palettes rangées.</span>
+            <span class="lang-de">Logistik- und Holzlager geöffnet Montag bis Samstag. Anlieferung per Kipper oder
+              palettiert.</span>
+          </p>
+          <div class="flex flex-col gap-space-xs">
+            <a class="font-label-lg text-label-lg text-primary hover:text-forest-dark transition-colors inline-flex items-center gap-space-xs"
+              href="tel:0478000000">
+              <span class="material-symbols-outlined text-[18px]">phone</span>04 78 00 00 00
+            </a>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">contact@atelier-forestier.fr</span>
+          </div>
+          <a class="mt-space-xs inline-flex items-center justify-center bg-primary-container hover:bg-forest-dark text-on-primary font-label-md text-label-md px-space-md py-space-sm rounded-lg transition-all"
+            href="#devis">
+            <span class="lang-fr">Obtenir un devis personnalisé</span>
+            <span class="lang-de">Persönliches Angebot erhalten</span>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mt-space-2xl pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant border-t border-border-warm">
+        <p>© 2024 Atelier Forestier. Tous droits réservés / Alle Rechte vorbehalten.</p>
+        <div class="flex items-center gap-space-lg">
+          <a class="hover:text-on-surface transition-colors" href="#">Mentions légales / Impressum</a>
+          <a class="hover:text-on-surface transition-colors" href="#">CGV / AGB</a>
+          <a class="hover:text-on-surface transition-colors" href="#">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Barre mobile fixe -->
+  <div
+    class="fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-md px-gutter-mobile py-space-sm flex md:hidden items-center gap-space-sm shadow-[0_-4px_16px_rgba(0,0,0,0.06)] border-t border-border-warm">
+    <button
+      class="px-3 h-[48px] rounded-lg bg-surface-container border border-border-warm text-charcoal font-bold text-xs"
+      onclick="toggleLanguage()">
+      <span class="lang-fr">DE</span><span class="lang-de">FR</span>
+    </button>
+    <a class="flex-1 h-[48px] inline-flex items-center justify-center gap-space-xs rounded-lg bg-surface-container text-primary font-label-md text-label-md"
+      href="tel:0478000000">
+      <span class="material-symbols-outlined text-[18px]">call</span>
+      <span><span class="lang-fr">Appeler</span><span class="lang-de">Anrufen</span></span>
+    </a>
+    <a class="flex-[2] h-[48px] inline-flex items-center justify-center rounded-lg bg-primary-container text-on-primary font-label-md text-label-md"
+      href="#devis">
+      <span class="lang-fr">Devis</span>
+      <span class="lang-de">Angebot</span>
+    </a>
+  </div>
+  <!-- Logique JavaScript Interactive pour le Switcher Bilingue & Header Transparency & Mobile Drawer -->
+  <script>
+    let currentLang = 'fr';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.body.setAttribute('data-lang', lang);
+
+      // Mettre à jour l'apparence des boutons de commutation
+      const frButtons = document.querySelectorAll('.lang-btn-fr');
+      const deButtons = document.querySelectorAll('.lang-btn-de');
+
+      if (lang === 'fr') {
+        frButtons.forEach(btn => {
+          btn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          btn.classList.remove('text-on-surface-variant');
+        });
+        deButtons.forEach(btn => {
+          btn.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          btn.classList.add('text-on-surface-variant');
+        });
+      } else {
+        deButtons.forEach(btn => {
+          btn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          btn.classList.remove('text-on-surface-variant');
+        });
+        frButtons.forEach(btn => {
+          btn.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          btn.classList.add('text-on-surface-variant');
+        });
+      }
+
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', '#' + lang);
+      }
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'fr' ? 'de' : 'fr');
+    }
+
+    // 1. Header scroll listener pour fond transparent / verre dépoli
+    const headerBar = document.getElementById('main-header-bar');
+    function handleScroll() {
+      if (window.scrollY >= 40) {
+        headerBar.classList.add('scrolled');
+      } else {
+        headerBar.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // 2. Gestion du Menu Mobile
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const burgerIcon = document.getElementById('burger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    function toggleMobileMenu() {
+      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    }
+
+    function openMobileMenu() {
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      mobileMenu.classList.remove('hidden');
+      burgerIcon.classList.add('hidden');
+      closeIcon.classList.remove('hidden');
+    }
+
+    function closeMobileMenu() {
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.add('hidden');
+      burgerIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+    }
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Fermeture automatique lors du clic sur un lien du menu mobile
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+
+    // Initialisation au chargement
+    window.addEventListener('DOMContentLoaded', () => {
+      handleScroll();
+      if (window.location.hash === '#de') {
+        setLanguage('de');
+      } else {
+        setLanguage('fr');
+      }
+    });
+  </script>
+</body>
+
+</html>
